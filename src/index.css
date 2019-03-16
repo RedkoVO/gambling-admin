@@ -6,6 +6,7 @@ html,
 }
 
 body {
+  height: 100%;
   font-size: 15px;
   font-weight: 300;
   font-family: Arial, sans-serif;
@@ -25,3 +26,4 @@ a {
 * {
   -webkit-overflow-scrolling: touch;
 }
+

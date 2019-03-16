@@ -12,10 +12,19 @@ import PageLayout from '../../../../components/App/PageLayout'
 // }
 
 class RoutePage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { isShowMenu: true }
+  }
+
   // componentDidMount() {
   //   const { dispatch } = this.props
   //   dispatch(checkAuth())
   // }
+
+  handleToogleMenu = () => {
+    this.setState({ isShowMenu: !this.state.isShowMenu })
+  }
 
   render() {
     const { location, checkAuthUser, component, ...rest } = this.props
@@ -27,7 +36,14 @@ class RoutePage extends Component {
       <Route
         {...rest}
         render={props => {
-          return <PageLayout {...props} content={component} />
+          return (
+            <PageLayout
+              isShowMenu={this.state.isShowMenu}
+              handleToogleMenu={this.handleToogleMenu}
+              {...props}
+              content={component}
+            />
+          )
         }}
       />
     )

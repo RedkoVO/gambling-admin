@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cn from 'classnames'
+
 import DefaultHeader from '../../../containers/Header'
 import DefaultNavMenu from '../../../components/NavMenu/Desktop'
 
@@ -10,21 +12,22 @@ export const PageLayout = ({
   // footer: Footer,
   handleToogleMenu,
   isShowMenu,
+  role,
   ...rest
 }) => {
   return (
-    <div className="wrContent">
+    <React.Fragment>
       <Header
         handleToogleMenu={handleToogleMenu}
         isShowMenu={isShowMenu}
         {...rest}
       />
       <NavMenu isShowMenu={isShowMenu} {...rest} />
-      <content>
-        <Content isShowMenu={isShowMenu} {...rest} />
+      <content className={cn('content', { hiddenMenu: !isShowMenu })}>
+        <Content {...rest} />
       </content>
       {/* <Footer {...rest} /> */}
-    </div>
+    </React.Fragment>
   )
 }
 

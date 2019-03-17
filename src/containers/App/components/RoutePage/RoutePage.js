@@ -32,12 +32,16 @@ class RoutePage extends Component {
     //   ? checkAuthUser.checkAuth.isAuth
     //   : false
 
+    /* TODO: Move to RootRoutes container and checkauth etc. */
+    const role = 0 /* 0 - admin, 1 - super admin */
+
     return (
       <Route
         {...rest}
         render={props => {
           return (
             <PageLayout
+              role={role}
               isShowMenu={this.state.isShowMenu}
               handleToogleMenu={this.handleToogleMenu}
               {...props}

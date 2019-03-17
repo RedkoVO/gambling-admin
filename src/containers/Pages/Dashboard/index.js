@@ -1,7 +1,7 @@
 import compose from 'recompose/compose'
 import { pure } from 'recompose'
 
-import Dashboard from '../../components/Dashboard/Desktop'
+import Dashboard from '../../../components/Pages/Dashboard/Desktop'
 
 export default compose(
   pure

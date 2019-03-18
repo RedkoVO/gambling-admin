@@ -12,25 +12,31 @@ const NavMenu = ({ classes, isShowMenu }) => (
   <nav className={cn(classes.root, { hiddenMenu: !isShowMenu })}>
     <ul className={classes.navList}>
       <li>
-        <NavLink to={'/'} className={classes.menuItem} activeClassName="active">
+        <NavLink to={'/'} exact className={classes.menuItem} activeClassName="active">
           <DashboardLogo className={classes.menuIcon} />
           Dashboard
         </NavLink>
       </li>
       <li>
-        <NavLink to={'/'} className={classes.menuItem} activeClassName="active">
+        <NavLink to={'/admins'} exact className={classes.menuItem} activeClassName="active">
           <DashboardLogo className={classes.menuIcon} />
-          Pages
+          Admins
         </NavLink>
       </li>
       <li>
-        <NavLink to={'/'} className={classes.menuItem} activeClassName="active">
+        <NavLink to={'/users'} exact className={classes.menuItem} activeClassName="active">
+          <DashboardLogo className={classes.menuIcon} />
+          Users
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to={'/#'} exact className={classes.menuItem} activeClassName="active">
           <DashboardLogo className={classes.menuIcon} />
           Settings
         </NavLink>
       </li>
       <li>
-        <NavLink to={'/'} className={classes.menuItem} activeClassName="active">
+        <NavLink to={'/#'} exact className={classes.menuItem} activeClassName="active">
           <DashboardLogo className={classes.menuIcon} />
           Contacts
         </NavLink>

@@ -4,10 +4,10 @@ import withStyles from '@material-ui/core/styles/withStyles'
 
 import styles from './styles'
 
-const Accounts = ({ classes, accountsData }) => (
+const Users = ({ classes, usersData }) => (
   <div className={classes.root}>
-    {accountsData.map(item => (
-      <div className={classes.accountItem} key={item.id}>
+    {usersData.map(item => (
+      <div className={classes.usersItem} key={item.id}>
         <div className={classes.id}>ID: {item.id}</div>
         <div className={classes.email}>Email: {item.email}</div>
         <div className={classes.name}>Name: {item.name}</div>
@@ -17,9 +17,9 @@ const Accounts = ({ classes, accountsData }) => (
   </div>
 )
 
-Accounts.propTypes = {
+Users.propTypes = {
   classes: PropTypes.object,
-  accountsData: PropTypes.array
+  usersData: PropTypes.array
 }
 
-export default withStyles(styles)(Accounts)
+export default withStyles(styles)(Users)

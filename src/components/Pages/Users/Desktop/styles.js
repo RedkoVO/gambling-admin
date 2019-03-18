@@ -1,8 +1,8 @@
 export default () => ({
   root: {
-    padding: '20px'
+    paddingLeft: '20px'
   },
-  accountItem: {
+  usersItem: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',

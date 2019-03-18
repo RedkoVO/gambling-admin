@@ -31,14 +31,13 @@ export default () => ({
     height: '100%',
     paddingLeft: '15px',
     textDecoration: 'none',
-    color: '#3f99d8',
+    color: '#fff',
     fontSize: '13px',
     verticalAlign: 'bottom',
-    textTransform: 'uppercase',
     cursor: 'pointer',
 
     '& svg path': {
-      fill: '#3f99d8 !important'
+      fill: '#fff !important'
     },
 
     '&:hover svg path': {
@@ -46,17 +45,11 @@ export default () => ({
     },
 
     '&:hover, &:active': {
-      color: '#fff',
       backgroundColor: '#1d2531'
     },
 
     '&.active': {
-      color: '#fff'
-      // backgroundColor: '#1d2531'
-    },
-
-    '&.active svg path': {
-      fill: '#fff !important'
+      backgroundColor: '#1d2531'
     }
   },
   menuIcon: {

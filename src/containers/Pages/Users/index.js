@@ -1,7 +1,7 @@
 import compose from 'recompose/compose'
 import { withProps, pure } from 'recompose'
 
-import Accounts from '../../../components/Pages/Accounts/Desktop'
+import Users from '../../../components/Pages/Users/Desktop'
 
 const mockData = [
   { id: 1, email: 'test123456789@test.com', name: 'Oleg', age: '25' },
@@ -12,6 +12,6 @@ const mockData = [
 ]
 
 export default compose(
-  withProps(() => ({ accountsData: mockData })),
+  withProps(() => ({ usersData: mockData })),
   pure
-)(Accounts)
+)(Users)

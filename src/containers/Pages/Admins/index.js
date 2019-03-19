@@ -56,7 +56,6 @@ export default compose(
     },
 
     handleChangeRole: ({ setRoleValue }) => value => {
-      console.log('handleChangeRole', value)
       setRoleValue(value)
     },
 

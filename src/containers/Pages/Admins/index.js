@@ -49,9 +49,15 @@ export default compose(
     form: FORM_NAME
   }),
   withState('isAddAdmin', 'setAddAdmin', false),
+  withState('roleValue', 'setRoleValue', 0),
   withHandlers({
     handleAddAdmin: ({ setAddAdmin, isAddAdmin }) => () => {
       setAddAdmin(!isAddAdmin)
+    },
+
+    handleChangeRole: ({ setRoleValue }) => value => {
+      console.log('handleChangeRole', value)
+      setRoleValue(value)
     },
 
     onSubmit: ({ handleSubmit }) =>

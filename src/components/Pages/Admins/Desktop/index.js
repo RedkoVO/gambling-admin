@@ -12,7 +12,9 @@ const Admins = ({
   adminsData,
   onSubmit,
   isAddAdmin,
-  handleAddAdmin
+  handleAddAdmin,
+  handleChangeRole,
+  roleValue
 }) => (
   <div className={classes.root}>
     <div className={classes.headerAdmins}>
@@ -21,9 +23,15 @@ const Admins = ({
           Add
         </div>
       </div>
-
-      {isAddAdmin && <AddNewAdmin onSubmit={onSubmit} />}
     </div>
+
+    {isAddAdmin && (
+      <AddNewAdmin
+        roleValue={roleValue}
+        onSubmit={onSubmit}
+        handleChangeRole={handleChangeRole}
+      />
+    )}
 
     {adminsData.map(item => (
       <Admin id={item.id} data={item} key={item.id} />
@@ -36,7 +44,9 @@ Admins.propTypes = {
   isAddAdmin: PropTypes.bool,
   adminsData: PropTypes.array,
   onSubmit: PropTypes.func,
-  handleAddAdmin: PropTypes.func
+  handleAddAdmin: PropTypes.func,
+  handleChangeRole: PropTypes.func,
+  roleValue: PropTypes.number
 }
 
 export default withStyles(styles)(Admins)

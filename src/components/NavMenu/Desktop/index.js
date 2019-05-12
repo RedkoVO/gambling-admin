@@ -29,16 +29,11 @@ const NavMenu = ({ classes, isShowMenu }) => (
           Users
         </NavLink>
       </li>
+
       <li>
         <NavLink to={'/#'} exact className={classes.menuItem} activeClassName="active">
           <DashboardLogo className={classes.menuIcon} />
-          Settings
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={'/#'} exact className={classes.menuItem} activeClassName="active">
-          <DashboardLogo className={classes.menuIcon} />
-          Contacts
+          Games
         </NavLink>
       </li>
     </ul>

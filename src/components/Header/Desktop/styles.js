@@ -11,7 +11,8 @@ export default theme => ({
     position: 'relative',
     width: '250px',
     height: '100%',
-    backgroundColor: '#263544'
+    backgroundColor: '#263544',
+    zIndex: 2
   },
   user: {
     display: 'flex',

@@ -3,10 +3,11 @@ import { compose, pure } from 'recompose'
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom'
 
 import RoutePage from '../RoutePage/RoutePage'
+import Dashboard from '../../../Pages/Dashboard'
 import Auth from '../../../Auth'
 import Admins from '../../../Pages/Admins'
 import Users from '../../../Pages/Users'
-import Dashboard from '../../../Pages/Dashboard'
+import Matches from '../../../Pages/Matches'
 
 import withToken from '../../../../hocs/withToken'
 
@@ -28,6 +29,7 @@ const RootRoute = props => {
       {/* {token && <RoutePage path={`/`} component={Dashboard} />} */}
       {tmpToken && <RoutePage path={`/users`} component={Users} />}
       {tmpToken && <RoutePage path={`/admins`} component={Admins} />}
+      {tmpToken && <RoutePage path={`/matches`} component={Matches} />}
 
       {tmpToken && <RoutePage path={`/`} component={Dashboard} />}
 

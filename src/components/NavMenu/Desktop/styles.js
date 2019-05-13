@@ -1,9 +1,11 @@
 export default () => ({
   root: {
     position: 'fixed',
+    top: 0,
     left: 0,
     width: '250px',
     height: '100%',
+    paddingTop: '70px',
     backgroundColor: '#263544',
     transition: 'left 0.2s ease-out',
 

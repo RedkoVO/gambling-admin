@@ -29,7 +29,12 @@ const NavMenu = ({ classes, isShowMenu }) => (
           Users
         </NavLink>
       </li>
-
+      <li>
+        <NavLink to={'/matches'} exact className={classes.menuItem} activeClassName="active">
+          <DashboardLogo className={classes.menuIcon} />
+          Matches
+        </NavLink>
+      </li>
       <li>
         <NavLink to={'/#'} exact className={classes.menuItem} activeClassName="active">
           <DashboardLogo className={classes.menuIcon} />

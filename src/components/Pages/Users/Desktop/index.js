@@ -17,15 +17,10 @@ const Users = ({ classes, usersData, isAddUser, handleAddUser, onSubmit }) => (
       </div>
     </div>
 
-    {isAddUser && (
-      <AddNewUser
-        onSubmit={onSubmit}
-      />
-    )}
+    {isAddUser && <AddNewUser onSubmit={onSubmit} />}
 
-    {usersData.map(item => (
-      <User id={item.id} data={item} key={item.id} />
-    ))}
+    {usersData &&
+      usersData.map(item => <User id={item.id} data={item} key={item.id} />)}
   </div>
 )
 
@@ -34,7 +29,7 @@ Users.propTypes = {
   usersData: PropTypes.array,
   isAddUser: PropTypes.bool,
   handleAddUser: PropTypes.func,
-  onSubmit: PropTypes.func,
+  onSubmit: PropTypes.func
 }
 
 export default withStyles(styles)(Users)

@@ -41,16 +41,16 @@ const AddNewMatch = ({ classes, onSubmit }) => (
   <div className={classes.root}>
     <Form className={classes.form} onSubmit={onSubmit}>
       <Field
-        id="team1Id"
-        name="team1Id"
+        id="team_1_id"
+        name="team_1_id"
         type="text"
         component={InputField}
         placeholder="Team 1"
         className={classes.field}
       />
       <Field
-        id="team2Id"
-        name="team2Id"
+        id="team_2_id"
+        name="team_2_id"
         type="text"
         component={InputField}
         placeholder="Team 2"
@@ -64,77 +64,24 @@ const AddNewMatch = ({ classes, onSubmit }) => (
         placeholder="Description"
         className={classes.field}
       />
+      <Field
+        id="start_at"
+        name="start_at"
+        type="text"
+        component={InputField}
+        placeholder="start_at"
+        className={classes.field}
+      />
+      <Field
+        id="finish_at"
+        name="finish_at"
+        type="text"
+        component={InputField}
+        placeholder="finish_at"
+        className={classes.field}
+      />
 
       {/** Checkboxes, dates, and selects */}
-
-      <div className={classes.paramsTitle}>Params:</div>
-
-      <Field
-        id="titleParams"
-        name="titleParams"
-        type="text"
-        component={InputField}
-        placeholder="Title params"
-        className={classes.field}
-      />
-      <Field
-        id="param1Title"
-        name="param1Title"
-        type="text"
-        component={InputField}
-        placeholder="Param 1 Title"
-        className={classes.field}
-      />
-      <Field
-        id="param1Coef"
-        name="param1Coef"
-        type="text"
-        component={InputField}
-        placeholder="Param 1 coef"
-        className={classes.field}
-      />
-
-      <Field
-        id="param2Title"
-        name="param2Title"
-        type="text"
-        component={InputField}
-        placeholder="Param 2 Title"
-        className={classes.field}
-      />
-      <Field
-        id="param2Coef"
-        name="param2Coef"
-        type="text"
-        component={InputField}
-        placeholder="Param 2 coef"
-        className={classes.field}
-      />
-
-      <Field
-        id="param3Title"
-        name="param3Title"
-        type="text"
-        component={InputField}
-        placeholder="Param 3 Title"
-        className={classes.field}
-      />
-      <Field
-        id="param3Coef"
-        name="param3Coef"
-        type="text"
-        component={InputField}
-        placeholder="Param 3 coef"
-        className={classes.field}
-      />
-      <Field
-        id="paramsAmount"
-        name="paramsAmount"
-        type="text"
-        component={InputField}
-        placeholder="Amount"
-        className={classes.field}
-      />
 
       <button type="submit" className={classes.submit}>
         Save

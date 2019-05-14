@@ -25,7 +25,27 @@ export const createFetchAdminsSuccess = data => {
   return {
     type: FETCH_ADMINS,
     payload: {
+      models: data.models,
       success: data.success
     }
+  }
+}
+
+/* PUT ADMIN */
+export const createAdmin = data => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`,
+        http_x_rest_method: 'PUT'
+      },
+      data: data,
+      url: `${gC.API_URL}/api/admins`
+    })
+    return res.data
+  } catch (error) {
+    console.log('PUT_ADMIN error', error)
   }
 }

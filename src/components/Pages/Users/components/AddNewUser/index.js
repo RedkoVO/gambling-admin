@@ -20,11 +20,11 @@ const AddNewAdmin = ({ classes, onSubmit }) => (
       />
 
       <Field
-        id="login"
-        name="login"
+        id="email"
+        name="email"
         type="text"
         component={InputField}
-        placeholder="Login"
+        placeholder="Email"
         className={classes.field}
       />
 

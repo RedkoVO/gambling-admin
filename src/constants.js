@@ -1,3 +1,3 @@
 export default {
-  API_URL: 'https://.......'
+  API_URL: 'http://gambling.admin.com'
 }

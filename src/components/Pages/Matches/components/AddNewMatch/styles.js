@@ -23,11 +23,6 @@ export default () => ({
     backgroundColor: '#fff',
     border: '1px solid #ccc'
   },
-  paramsTitle: {
-    paddingBottom: '15px',
-    fontSize: '15px',
-    textDecoration: 'underline'
-  },
   submit: {
     width: '150px',
     margin: '0 auto',

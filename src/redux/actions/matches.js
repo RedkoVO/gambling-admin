@@ -1,10 +1,10 @@
-import { FETCH_USERS } from './types'
+import { FETCH_MATCHES } from './types'
 import axios from 'axios'
 
 import gC from '../../constants'
 
-/* FETCH USERS */
-export const fetchUsers = () => async dispatch => {
+/* FETCH MATCHES */
+export const fetchMatches = () => async dispatch => {
   try {
     const res = await axios({
       method: 'get',
@@ -12,18 +12,18 @@ export const fetchUsers = () => async dispatch => {
         Accept: 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      url: `${gC.API_URL}/api/users`
+      url: `${gC.API_URL}/api/matches`
     })
-    dispatch(createFetchUsersSuccess(res.data))
+    dispatch(createFetchMatchesSuccess(res.data))
     return res.data
   } catch (error) {
-    console.log('FETCH_USERS error', error)
+    console.log('FETCH_MATCHES error', error)
   }
 }
 
-export const createFetchUsersSuccess = data => {
+export const createFetchMatchesSuccess = data => {
   return {
-    type: FETCH_USERS,
+    type: FETCH_MATCHES,
     payload: {
       models: data.models,
       success: data.success
@@ -31,8 +31,8 @@ export const createFetchUsersSuccess = data => {
   }
 }
 
-/* PUT USER */
-export const createUser = data => async () => {
+/* PUT MATCHES */
+export const createMatches = data => async () => {
   try {
     const res = await axios({
       method: 'post',
@@ -42,10 +42,10 @@ export const createUser = data => async () => {
         http_x_rest_method: 'PUT'
       },
       data: data,
-      url: `${gC.API_URL}/api/users`
+      url: `${gC.API_URL}/api/matches`
     })
     return res.data
   } catch (error) {
-    console.log('PUT_USER error', error)
+    console.log('PUT_MATCHES error', error)
   }
 }

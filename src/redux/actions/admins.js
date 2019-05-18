@@ -49,3 +49,39 @@ export const createAdmin = data => async () => {
     console.log('PUT_ADMIN error', error)
   }
 }
+
+/* UPDATE ADMIN */
+export const updateAdmin = data => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`
+      },
+      data: data,
+      url: `${gC.API_URL}/api/admins?id=${data.id}`
+    })
+    return res.data
+  } catch (error) {
+    console.log('UPDATE_ADMIN error', error)
+  }
+}
+
+/* REMOVE ADMIN */
+export const removeAdmin = id => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`,
+        http_x_rest_method: 'DELETE'
+      },
+      url: `${gC.API_URL}/api/admins?id=${id}`
+    })
+    return res.data
+  } catch (error) {
+    console.log('REMOVE_ADMIN error', error)
+  }
+}

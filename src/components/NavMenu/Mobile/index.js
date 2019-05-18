@@ -9,7 +9,7 @@ import { ReactComponent as DashboardLogo } from '../../../assets/images/svg/wall
 import styles from './styles'
 
 const NavMenu = ({ classes, isShowMenu }) => (
-  <nav className={cn(classes.root, { hiddenMenu: !isShowMenu })}>
+  <nav className={cn(classes.root, { hiddenMenu: isShowMenu })}>
     <ul className={classes.navList}>
       <li>
         <NavLink

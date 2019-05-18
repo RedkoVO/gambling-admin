@@ -1,16 +1,16 @@
 export default () => ({
   root: {
-    position: 'fixed',
+    position: 'absolute',
     paddingTop: '70px',
     top: 0,
     left: 0,
-    width: '250px',
-    height: '100%',
+    width: '100%',
     backgroundColor: '#263544',
     transition: 'left 0.2s ease-out',
+    zIndex: 1,
 
     '&.hiddenMenu': {
-      left: '-250px'
+      left: '-100%'
     }
   },
   navList: {

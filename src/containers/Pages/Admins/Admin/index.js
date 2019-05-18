@@ -3,6 +3,12 @@ import { withHandlers, withState, pure } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
+import {
+  fetchAdmins,
+  updateAdmin,
+  removeAdmin
+} from '../../../../redux/actions/admins'
+
 import Admin from '../../../../components/Pages/Admins/components/Admin'
 
 const FORM_NAME = 'admin'
@@ -19,14 +25,48 @@ export default compose(
   connect(mapStateToProps),
   reduxForm(),
   withState('isShowMore', 'setShowMore', false),
+  withState('isConfirmRemoveAdmin', 'setConfirmRemoveAdmin', false),
   withHandlers({
     handleShowMore: ({ isShowMore, setShowMore }) => () => {
       setShowMore(!isShowMore)
     },
 
-    onSubmit: ({ handleSubmit }) =>
+    handleConfirmRemoveAdmin: ({
+      isConfirmRemoveAdmin,
+      setConfirmRemoveAdmin
+    }) => () => {
+      setConfirmRemoveAdmin(!isConfirmRemoveAdmin)
+    },
+
+    handleRemoveAdmin: ({ dispatch }) => id => {
+      dispatch(removeAdmin(id))
+        .then(res => {
+          if (res.success) {
+            dispatch(fetchAdmins())
+          }
+        })
+        .catch(err => {
+          console.log('Error delete:', err)
+        })
+    },
+
+    onSubmit: ({ dispatch, handleSubmit, data }) =>
       handleSubmit(variables => {
-        console.log('variables', variables)
+        const dataReqest = {
+          id: data.id,
+          login: variables.login,
+          password: variables.password
+        }
+
+        dispatch(updateAdmin(dataReqest))
+          .then(res => {
+            if (res.success) {
+              dispatch(fetchAdmins())
+            }
+          })
+          .catch(err => {
+            console.log('Error update:', err)
+          })
       })
   }),
   pure

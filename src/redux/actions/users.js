@@ -49,3 +49,39 @@ export const createUser = data => async () => {
     console.log('PUT_USER error', error)
   }
 }
+
+/* UPDATE USER */
+export const updateUser = data => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`
+      },
+      data: data,
+      url: `${gC.API_URL}/api/users?id=${data.id}`
+    })
+    return res.data
+  } catch (error) {
+    console.log('UPDATE_USER error', error)
+  }
+}
+
+/* REMOVE USER */
+export const removeUser = id => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`,
+        http_x_rest_method: 'DELETE'
+      },
+      url: `${gC.API_URL}/api/users?id=${id}`
+    })
+    return res.data
+  } catch (error) {
+    console.log('REMOVE_USER error', error)
+  }
+}

@@ -2,7 +2,7 @@ export default () => ({
   root: {
     paddingLeft: '20px'
   },
-  headerAdmins: {
+  headerGames: {
     position: 'relative',
     padding: '0 10px',
     marginBottom: '15px',
@@ -30,7 +30,7 @@ export default () => ({
     alignItems: 'center',
     minHeight: '60px'
   },
-  addAdmin: {
+  addGame: {
     padding: '10px 20px',
     color: '#fff',
     borderRadius: '20px',

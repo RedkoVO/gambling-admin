@@ -13,12 +13,12 @@ export default () => ({
   },
   shortContent: {
     display: 'flex',
+    alignItems: 'start',
     flexDirection: 'column',
-    minHeight: '60px',
-
-    '& .field': {
-      padding: '10px 0'
-    }
+    minHeight: '60px'
+  },
+  field: {
+    padding: '10px 0'
   },
   edit: {
     width: '15px',
@@ -33,13 +33,6 @@ export default () => ({
   alowEdit: {
     display: 'flex',
     alignItems: 'center'
-  },
-  field: {
-    padding: '10px 0',
-
-    '& span': {
-      fontWeight: 900
-    }
   },
   fieldEdit: {
     display: 'flex',
@@ -80,34 +73,8 @@ export default () => ({
 
     '& span': {
       display: 'inline-block',
-      minWidth: '125px'
+      minWidth: '115px'
     }
-  },
-  fieldEditDescription: {
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-
-    '& textarea': {
-      width: '100%',
-      height: '200px',
-      fontSize: '14px',
-      border: '1px solid #e0e0e0',
-      borderRadius: '5px'
-    },
-
-    '& span': {
-      width: '100%'
-    }
-  },
-  wrParams: {
-    padding: '20px 0',
-    borderTop: '2px solid #f0eff0'
-  },
-  paramsTitle: {
-    fontSize: '15px',
-    textDecoration: 'underline',
-    paddingBottom: '15px'
   },
   wrConfirmationRemove: {
     marginRight: '20px',

@@ -4,20 +4,19 @@ import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
 import {
-  fetchUsers,
-  updateUser,
-  removeUser
-} from '../../../../redux/actions/users'
+  fetchGames,
+  updateGame,
+  removeGame
+} from '../../../../redux/actions/games'
 
-import User from '../../../../components/Pages/Users/components/User'
+import Game from '../../../../components/Pages/Games/components/Game'
 
-const FORM_NAME = 'user'
+const FORM_NAME = 'game'
 
 const mapStateToProps = (state, ownProps) => ({
   form: `${FORM_NAME}-${ownProps.id}`,
   initialValues: {
-    email: ownProps.data.email,
-    username: ownProps.data.username,
+    login: ownProps.data.login,
     password: ownProps.data.password
   }
 })
@@ -26,24 +25,24 @@ export default compose(
   connect(mapStateToProps),
   reduxForm(),
   withState('isShowMore', 'setShowMore', false),
-  withState('isConfirmRemoveUser', 'setConfirmRemoveUser', false),
+  withState('isConfirmRemoveGame', 'setConfirmRemoveGame', false),
   withHandlers({
     handleShowMore: ({ isShowMore, setShowMore }) => () => {
       setShowMore(!isShowMore)
     },
 
-    handleConfirmRemoveUser: ({
-      isConfirmRemoveUser,
-      setConfirmRemoveUser
+    handleConfirmRemoveGame: ({
+      isConfirmRemoveGame,
+      setConfirmRemoveGame
     }) => () => {
-      setConfirmRemoveUser(!isConfirmRemoveUser)
+      setConfirmRemoveGame(!isConfirmRemoveGame)
     },
 
-    handleRemoveUser: ({ dispatch }) => id => {
-      dispatch(removeUser(id))
+    handleRemoveGame: ({ dispatch }) => id => {
+      dispatch(removeGame(id))
         .then(res => {
           if (res.success) {
-            dispatch(fetchUsers())
+            dispatch(fetchGames())
           }
         })
         .catch(err => {
@@ -55,15 +54,14 @@ export default compose(
       handleSubmit(variables => {
         const dataReqest = {
           id: data.id,
-          username: variables.username,
-          email: variables.email,
+          login: variables.login,
           password: variables.password
         }
 
-        dispatch(updateUser(dataReqest))
+        dispatch(updateGame(dataReqest))
           .then(res => {
             if (res.success) {
-              dispatch(fetchUsers())
+              dispatch(fetchGames())
             }
           })
           .catch(err => {
@@ -72,4 +70,4 @@ export default compose(
       })
   }),
   pure
-)(User)
+)(Game)

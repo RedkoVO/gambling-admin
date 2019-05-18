@@ -11,74 +11,103 @@ import TextField from '../../../../App/Form/TextField'
 import EditableTextField from '../../../../App/Form/EditableTextField'
 
 import ShowMoreIcon from '../../../../../assets/images/show_more.png'
+import RemoveIcon from '../../../../../assets/images/remove.png'
 
 import styles from './styles'
 
-const Match = ({ classes, data, handleShowMore, isShowMore, onSubmit }) => (
-  <div className={classes.root} key={data.id}>
-    <Form className={classes.form} onSubmit={onSubmit}>
-      <div className={classes.shortContent}>
-        <div className={classes.wrField}>id: {data.id}</div>
-        <div className={classes.wrField}>
-          title: <span>{data.title}</span>
-        </div>
-        <div className={classes.wrField}>1 team id: {data.team_1_id}</div>
-        <div className={classes.wrField}>2 team id: {data.team_2_id}</div>
+const Match = ({
+  classes,
+  data,
+  handleShowMore,
+  handleRemoveMatch,
+  handleConfirmRemoveMatch,
+  isConfirmRemoveMatch,
+  isShowMore,
+  onSubmit
+}) => {
+  const formName = `match-${data.id}`
 
-        <img
-          src={ShowMoreIcon}
-          className={classes.showMoreIcon}
-          onClick={() => handleShowMore()}
-          alt="show more"
-        />
-      </div>
-
-      {isShowMore && (
-        <div className={classes.moreContent}>
-          <div className={classes.moreItem}>
-            <span>win id:</span>
-            {data.win_id}
+  return (
+    <div className={classes.root} key={data.id}>
+      <Form className={classes.form} onSubmit={onSubmit}>
+        <div className={classes.shortContent}>
+          <div className={classes.field}>id: {data.id}</div>
+          <div className={classes.field}>
+            title: <span>{data.title}</span>
           </div>
+          <div className={classes.field}>1 team id: {data.team_1_id}</div>
+          <div className={classes.field}>2 team id: {data.team_2_id}</div>
 
-          <div className={cn(classes.moreItem, classes.alowEdit)}>
-            <span>description:</span>
-            <EditableTextField
-              text={data.description}
-              fieldId="description"
-              fieldName="description"
-              component={TextField}
-              placeholder="Description"
-              className={classes.fieldEditDescription}
-              formName={`product-${data.id}`}
+          <div className={classes.wrRightButtons}>
+            {isConfirmRemoveMatch ? (
+              <div className={classes.wrConfirmationRemove}>
+                <div onClick={() => handleRemoveMatch(data.id)}>DELETE</div>
+                <div onClick={() => handleConfirmRemoveMatch()}>CANCEL</div>
+              </div>
+            ) : (
+              <img
+                src={RemoveIcon}
+                className={classes.remove}
+                onClick={() => handleConfirmRemoveMatch()}
+                alt="remove"
+              />
+            )}
+
+            <img
+              src={ShowMoreIcon}
+              className={classes.showMoreIcon}
+              onClick={() => handleShowMore()}
+              alt="show more"
             />
           </div>
+        </div>
 
-          <div className={classes.moreItem}>
-            <span>start:</span>
-            {data.start_at}
-          </div>
-          <div className={classes.moreItem}>
-            <span>finish:</span>
-            {data.finish_at}
-          </div>
-          <div className={classes.moreItem}>
-            <span>1 team score:</span>
-            {data.team_1_score}
-          </div>
-          <div className={classes.moreItem}>
-            <span>2 team score:</span>
-            {data.team_2_score}
-          </div>
-          <div className={classes.moreItem}>
-            <span>bets accepting:</span>
-            {data.is_bets_accepting}
-          </div>
-          <div className={classes.moreItem}>
-            <span>status:</span>
-            {data.status}
-          </div>
+        {isShowMore && (
+          <div className={classes.moreContent}>
+            <div className={classes.moreItem}>
+              <span>win id:</span>
+              {data.win_id}
+            </div>
 
-          {/* <div className={classes.wrParams}>
+            <div className={cn(classes.moreItem, classes.alowEdit)}>
+              <span>description:</span>
+              <EditableTextField
+                text={data.description}
+                fieldId="description"
+                fieldName="description"
+                component={TextField}
+                placeholder="Description"
+                className={classes.fieldEditDescription}
+                formName={formName}
+              />
+            </div>
+
+            <div className={classes.moreItem}>
+              <span>start:</span>
+              {data.start_at}
+            </div>
+            <div className={classes.moreItem}>
+              <span>finish:</span>
+              {data.finish_at}
+            </div>
+            <div className={classes.moreItem}>
+              <span>1 team score:</span>
+              {data.team_1_score}
+            </div>
+            <div className={classes.moreItem}>
+              <span>2 team score:</span>
+              {data.team_2_score}
+            </div>
+            <div className={classes.moreItem}>
+              <span>bets accepting:</span>
+              {data.is_bets_accepting}
+            </div>
+            <div className={classes.moreItem}>
+              <span>status:</span>
+              {data.status}
+            </div>
+
+            {/* <div className={classes.wrParams}>
             <div className={classes.paramsTitle}>Params:</div>
             <div className={classes.moreItem}>
               <span>id:</span>
@@ -165,18 +194,22 @@ const Match = ({ classes, data, handleShowMore, isShowMore, onSubmit }) => (
               {data.params.win_id}
             </div>
           </div> */}
-        </div>
-      )}
-    </Form>
-  </div>
-)
+          </div>
+        )}
+      </Form>
+    </div>
+  )
+}
 
 Match.propTypes = {
   classes: PropTypes.object,
   data: PropTypes.object,
-  handleShowMore: PropTypes.func,
-  isShowMore: PropTypes.bool,
-  onSubmit: PropTypes.func
+  handleShowMore: PropTypes.func.isRequired,
+  isShowMore: PropTypes.bool.isRequired,
+  isConfirmRemoveMatch: PropTypes.bool.isRequired,
+  handleRemoveMatch: PropTypes.func.isRequired,
+  handleConfirmRemoveMatch: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(Match)

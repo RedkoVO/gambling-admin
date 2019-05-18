@@ -2,8 +2,10 @@ export default theme => ({
   root: {
     display: 'flex',
     justifyContent: 'space-between',
+    position: 'relative',
     height: '70px',
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    zIndex: 2
   },
   toggleMenuBlock: {
     display: 'flex',
@@ -12,7 +14,10 @@ export default theme => ({
     width: '250px',
     height: '100%',
     backgroundColor: '#263544',
-    zIndex: 2
+
+    [theme.breakpoints.down('sm')]: {
+      width: '60px'
+    }
   },
   user: {
     display: 'flex',

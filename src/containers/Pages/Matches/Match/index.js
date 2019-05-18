@@ -3,6 +3,8 @@ import { withHandlers, withState, pure } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 
+import { fetchMatches, updateMatch, removeMatch } from '../../../../redux/actions/matches'
+
 import Match from '../../../../components/Pages/Matches/components/Match'
 
 const FORM_NAME = 'match'
@@ -22,14 +24,47 @@ export default compose(
   connect(mapStateToProps),
   reduxForm(),
   withState('isShowMore', 'setShowMore', false),
+  withState('isConfirmRemoveMatch', 'setConfirmRemoveMatch', false),
   withHandlers({
     handleShowMore: ({ isShowMore, setShowMore }) => () => {
       setShowMore(!isShowMore)
     },
 
-    onSubmit: ({ handleSubmit }) =>
+    handleConfirmRemoveMatch: ({
+      isConfirmRemoveMatch,
+      setConfirmRemoveMatch
+    }) => () => {
+      setConfirmRemoveMatch(!isConfirmRemoveMatch)
+    },
+
+    handleRemoveMatch: ({ dispatch }) => id => {
+      dispatch(removeMatch(id))
+        .then(res => {
+          if (res.success) {
+            dispatch(fetchMatches())
+          }
+        })
+        .catch(err => {
+          console.log('Error delete:', err)
+        })
+    },
+
+    onSubmit: ({ dispatch, handleSubmit, data }) =>
       handleSubmit(variables => {
-        console.log('variables', variables)
+        const dataReqest = {
+          id: data.id,
+          description: variables.description
+        }
+
+        dispatch(updateMatch(dataReqest))
+          .then(res => {
+            if (res.success) {
+              dispatch(fetchMatches())
+            }
+          })
+          .catch(err => {
+            console.log('Error update:', err)
+          })
       })
   }),
   pure

@@ -13,9 +13,12 @@ export default () => ({
   },
   shortContent: {
     display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'nowrap',
+    alignItems: 'start',
+    flexDirection: 'column',
     minHeight: '60px'
+  },
+  field: {
+    padding: '10px 0'
   },
   edit: {
     width: '15px',
@@ -34,27 +37,31 @@ export default () => ({
   fieldEdit: {
     display: 'flex',
     alignItems: 'center',
-    marginLeft: '5px'
+    marginLeft: '5px',
+
+    '& input': {
+      paddingLeft: '5px',
+      height: '30px',
+      fontSize: '14px',
+      borderRadius: '5px',
+      border: '1px solid #e0e0e0'
+    }
   },
-  id: {
-    width: '50px'
+  wrRightButtons: {
+    display: 'flex',
+    alignItems: 'center',
+    position: 'absolute',
+    right: '10px',
+    top: '23px'
   },
-  email: {
-    width: '300px'
-  },
-  username: {
-    width: '245px'
-  },
-  created: {
-    width: '300px'
-  },
-  avatar: {
-    width: '40px'
+  remove: {
+    width: '20px',
+    marginRight: '20px',
+    cursor: 'pointer'
   },
   showMoreIcon: {
     width: '20px',
-    position: 'absolute',
-    right: '20px',
+    right: '50px',
     cursor: 'pointer'
   },
   moreContent: {
@@ -67,6 +74,22 @@ export default () => ({
     '& span': {
       display: 'inline-block',
       minWidth: '125px'
+    }
+  },
+  wrConfirmationRemove: {
+    marginRight: '20px',
+
+    '& div': {
+      marginBottom: '5px',
+      cursor: 'pointer',
+
+      '&:first-child': {
+        color: 'red'
+      },
+
+      '&:hover': {
+        textDecoration: 'underline'
+      }
     }
   }
 })

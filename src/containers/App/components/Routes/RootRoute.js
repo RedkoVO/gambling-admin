@@ -8,6 +8,8 @@ import Admins from '../../../Pages/Admins'
 import Users from '../../../Pages/Users'
 import Matches from '../../../Pages/Matches'
 import Games from '../../../Pages/Games'
+import Teams from '../../../Pages/Teams'
+import Bets from '../../../Pages/Bets'
 
 import withToken from '../../../../hocs/withToken'
 
@@ -29,6 +31,8 @@ const RootRoute = props => {
       {tmpToken && <RoutePage path={`/users`} component={Users} />}
       {tmpToken && <RoutePage path={`/matches`} component={Matches} />}
       {tmpToken && <RoutePage path={`/games`} component={Games} />}
+      {tmpToken && <RoutePage path={`/teams`} component={Teams} />}
+      {tmpToken && <RoutePage path={`/bets`} component={Bets} />}
 
       {tmpToken && <RoutePage path={`/`} component={Admins} />}
 

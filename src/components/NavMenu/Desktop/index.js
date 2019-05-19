@@ -55,6 +55,28 @@ const NavMenu = ({ classes, isShowMenu }) => (
           Games
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={'/teams'}
+          exact
+          className={classes.menuItem}
+          activeClassName="active"
+        >
+          <DashboardLogo className={classes.menuIcon} />
+          Teams
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={'/bets'}
+          exact
+          className={classes.menuItem}
+          activeClassName="active"
+        >
+          <DashboardLogo className={classes.menuIcon} />
+          Bets
+        </NavLink>
+      </li>
     </ul>
   </nav>
 )

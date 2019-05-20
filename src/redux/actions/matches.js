@@ -85,3 +85,59 @@ export const removeMatch = id => async () => {
     console.log('REMOVE_MATCH error', error)
   }
 }
+
+/* --- PARAMETERS --- */
+/* PUT PARAMETER */
+export const createParameter = data => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`,
+        http_x_rest_method: 'PUT'
+      },
+      data: data,
+      url: `${gC.API_URL}/api/match-parameters`
+    })
+    return res.data
+  } catch (error) {
+    console.log('PUT_PARAMETER error', error)
+  }
+}
+
+/* UPDATE PARAMETER */
+export const updateParameter = data => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`
+      },
+      data: data,
+      url: `${gC.API_URL}/api/match-parameters?id=${data.id}`
+    })
+    return res.data
+  } catch (error) {
+    console.log('UPDATE_PARAMETER error', error)
+  }
+}
+
+/* REMOVE PARAMETER */
+export const removeParameter = id => async () => {
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`,
+        http_x_rest_method: 'DELETE'
+      },
+      url: `${gC.API_URL}/api/match-parameters?id=${id}`
+    })
+    return res.data
+  } catch (error) {
+    console.log('REMOVE_PARAMETER error', error)
+  }
+}

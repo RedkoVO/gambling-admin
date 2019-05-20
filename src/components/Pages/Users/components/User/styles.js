@@ -1,5 +1,3 @@
-import EditIcon from '../../../../../assets/images/edit.png'
-
 export default () => ({
   root: {
     position: 'relative',
@@ -19,16 +17,6 @@ export default () => ({
   },
   field: {
     padding: '10px 0'
-  },
-  edit: {
-    width: '15px',
-    height: '15px',
-    marginLeft: '10px',
-    backgroundImage: `url(${EditIcon})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 0,
-    cursor: 'pointer'
   },
   alowEdit: {
     display: 'flex',

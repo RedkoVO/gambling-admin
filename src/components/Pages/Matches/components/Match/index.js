@@ -5,10 +5,8 @@ import cn from 'classnames'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import TextField from '../../../../App/Form/TextField'
-
-// import InputField from '../../../../App/Form/InputField'
-// import EditableField from '../../../../App/Form/EditableField'
 import EditableTextField from '../../../../App/Form/EditableTextField'
+import Parameters from '../../../../../containers/Pages/Matches/Match/Parameters'
 
 import ShowMoreIcon from '../../../../../assets/images/show_more.png'
 import RemoveIcon from '../../../../../assets/images/remove.png'
@@ -106,97 +104,11 @@ const Match = ({
               <span>status:</span>
               {data.status}
             </div>
-
-            {/* <div className={classes.wrParams}>
-            <div className={classes.paramsTitle}>Params:</div>
-            <div className={classes.moreItem}>
-              <span>id:</span>
-              {data.params.id}
-            </div>
-            <div className={classes.moreItem}>
-              <span>match id:</span>
-              {data.params.match_id}
-            </div>
-            <div className={cn(classes.moreItem, classes.alowEdit)}>
-              <span>title:</span>
-              <EditableField
-                text={data.params.title}
-                fieldId="paramsTitle"
-                fieldName="paramsTitle"
-                type="text"
-                component={InputField}
-                placeholder="Params title"
-                className={classes.fieldEdit}
-                formName={`match-${data.id}`}
-              />
-            </div>
-            <div className={cn(classes.moreItem, classes.alowEdit)}>
-              <span>param 1 title:</span>
-              <EditableField
-                text={data.params.param1_title}
-                fieldId="paramsTitle1"
-                fieldName="paramsTitle1"
-                type="text"
-                component={InputField}
-                placeholder="Params title 1"
-                className={classes.fieldEdit}
-                formName={`match-${data.id}`}
-              />
-            </div>
-            <div className={classes.moreItem}>
-              <span>param 1 coef:</span>
-              {data.params.param1_coef}
-            </div>
-            <div className={cn(classes.moreItem, classes.alowEdit)}>
-              <span>param 2 title:</span>
-              <EditableField
-                text={data.params.param2_title}
-                fieldId="paramsTitle2"
-                fieldName="paramsTitle2"
-                type="text"
-                component={InputField}
-                placeholder="Params title 2"
-                className={classes.fieldEdit}
-                formName={`match-${data.id}`}
-              />
-            </div>
-            <div className={classes.moreItem}>
-              <span>param 2 coef:</span>
-              {data.params.param2_coef}
-            </div>
-            <div className={cn(classes.moreItem, classes.alowEdit)}>
-              <span>param 3 title:</span>
-              <EditableField
-                text={data.params.param3_title}
-                fieldId="paramsTitle3"
-                fieldName="paramsTitle3"
-                type="text"
-                component={InputField}
-                placeholder="Params title 3"
-                className={classes.fieldEdit}
-                formName={`match-${data.id}`}
-              />
-            </div>
-            <div className={classes.moreItem}>
-              <span>param 3 coef:</span>
-              {data.params.param3_coef}
-            </div>
-            <div className={classes.moreItem}>
-              <span>amount:</span>
-              {data.params.params_amount}
-            </div>
-            <div className={classes.moreItem}>
-              <span>is main:</span>
-              {data.params.is_main}
-            </div>
-            <div className={classes.moreItem}>
-              <span>win id:</span>
-              {data.params.win_id}
-            </div>
-          </div> */}
           </div>
         )}
       </Form>
+
+      {isShowMore && <Parameters data={data.parameters} matchId={data.id} />}
     </div>
   )
 }

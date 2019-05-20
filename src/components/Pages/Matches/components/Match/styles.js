@@ -1,5 +1,3 @@
-import EditIcon from '../../../../../assets/images/edit.png'
-
 export default () => ({
   root: {
     position: 'relative',
@@ -20,16 +18,6 @@ export default () => ({
       padding: '10px 0'
     }
   },
-  edit: {
-    width: '15px',
-    height: '15px',
-    marginLeft: '10px',
-    backgroundImage: `url(${EditIcon})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 0,
-    cursor: 'pointer'
-  },
   alowEdit: {
     display: 'flex',
     alignItems: 'center'
@@ -44,7 +32,6 @@ export default () => ({
   fieldEdit: {
     display: 'flex',
     alignItems: 'center',
-    marginLeft: '5px',
 
     '& input': {
       paddingLeft: '5px',
@@ -99,15 +86,6 @@ export default () => ({
     '& span': {
       width: '100%'
     }
-  },
-  wrParams: {
-    padding: '20px 0',
-    borderTop: '2px solid #f0eff0'
-  },
-  paramsTitle: {
-    fontSize: '15px',
-    textDecoration: 'underline',
-    paddingBottom: '15px'
   },
   wrConfirmationRemove: {
     marginRight: '20px',

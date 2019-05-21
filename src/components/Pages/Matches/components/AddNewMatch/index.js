@@ -1,13 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'redux-form'
+import DatePicker from 'react-datepicker'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import InputField from '../../../../App/Form/InputField'
+import LiveSearch from '../../../../App/Form/LiveSearch'
+
+import 'react-datepicker/dist/react-datepicker.css'
 
 import styles from './styles'
 
-const AddNewMatch = ({ classes, onSubmit }) => (
+const AddNewMatch = ({
+  classes,
+  startDate,
+  finishDate,
+  handleStartDate,
+  handleFinishDate,
+  onSubmit,
+  teams
+}) => (
   <div className={classes.root}>
     <Form className={classes.form} onSubmit={onSubmit}>
       <Field
@@ -26,6 +38,9 @@ const AddNewMatch = ({ classes, onSubmit }) => (
         placeholder="Team 2"
         className={classes.field}
       />
+
+      <LiveSearch teams={teams} />
+
       <Field
         id="description"
         name="description"
@@ -34,24 +49,20 @@ const AddNewMatch = ({ classes, onSubmit }) => (
         placeholder="Description"
         className={classes.field}
       />
-      <Field
-        id="start_at"
-        name="start_at"
-        type="text"
-        component={InputField}
-        placeholder="start_at"
-        className={classes.field}
-      />
-      <Field
-        id="finish_at"
-        name="finish_at"
-        type="text"
-        component={InputField}
-        placeholder="finish_at"
-        className={classes.field}
-      />
-
-      {/** Checkboxes, dates, and selects */}
+      <div className={classes.wrDatapicker}>
+        <DatePicker
+          selected={startDate}
+          onChange={date => handleStartDate(date)}
+          dateFormat="YYYY-MM-dd HH:mm"
+          showTimeInput
+        />
+        <DatePicker
+          selected={finishDate}
+          onChange={date => handleFinishDate(date)}
+          dateFormat="YYYY-MM-dd HH:mm"
+          showTimeInput
+        />
+      </div>
 
       <button type="submit" className={classes.submit}>
         Save
@@ -62,7 +73,12 @@ const AddNewMatch = ({ classes, onSubmit }) => (
 
 AddNewMatch.propTypes = {
   classes: PropTypes.object,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  startDate: PropTypes.object,
+  finishDate: PropTypes.object,
+  handleStartDate: PropTypes.func,
+  handleFinishDate: PropTypes.func,
+  teams: PropTypes.array
 }
 
 export default withStyles(styles)(AddNewMatch)

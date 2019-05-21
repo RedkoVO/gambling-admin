@@ -102,5 +102,17 @@ export default () => ({
         textDecoration: 'underline'
       }
     }
+  },
+  wrDatapicker: {
+    '& .react-datepicker-wrapper input': {
+      padding: '8px 10px',
+      marginBottom: '20px',
+      width: '180px',
+      fontSize: '14px',
+      borderRadius: '2px',
+      color: '#495057',
+      backgroundColor: '#fff',
+      border: '1px solid #ccc'
+    }
   }
 })

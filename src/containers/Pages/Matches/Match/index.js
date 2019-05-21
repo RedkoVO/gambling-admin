@@ -2,8 +2,13 @@ import compose from 'recompose/compose'
 import { withHandlers, withState, pure } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
+import moment from 'moment'
 
-import { fetchMatches, updateMatch, removeMatch } from '../../../../redux/actions/matches'
+import {
+  fetchMatches,
+  updateMatch,
+  removeMatch
+} from '../../../../redux/actions/matches'
 
 import Match from '../../../../components/Pages/Matches/components/Match'
 
@@ -25,6 +30,8 @@ export default compose(
   reduxForm(),
   withState('isShowMore', 'setShowMore', false),
   withState('isConfirmRemoveMatch', 'setConfirmRemoveMatch', false),
+  withState('startDate', 'setStartDate', new Date()),
+  withState('finishDate', 'setFinishDate', new Date()),
   withHandlers({
     handleShowMore: ({ isShowMore, setShowMore }) => () => {
       setShowMore(!isShowMore)
@@ -49,11 +56,21 @@ export default compose(
         })
     },
 
-    onSubmit: ({ dispatch, handleSubmit, data }) =>
+    handleStartDate: ({ setStartDate }) => value => {
+      setStartDate(value)
+    },
+
+    handleFinishDate: ({ setFinishDate }) => value => {
+      setFinishDate(value)
+    },
+
+    onSubmit: ({ dispatch, handleSubmit, startDate, finishDate, data }) =>
       handleSubmit(variables => {
         const dataReqest = {
           id: data.id,
-          description: variables.description
+          description: variables.description,
+          start_at: moment(startDate).format('YYYY-MM-DD HH:mm'),
+          finish_at: moment(finishDate).format('YYYY-MM-DD HH:mm')
         }
 
         dispatch(updateMatch(dataReqest))

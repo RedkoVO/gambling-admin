@@ -32,5 +32,17 @@ export default () => ({
     borderRadius: '20px',
     fontSize: '14px',
     backgroundColor: '#2ed8b6'
+  },
+  wrDatapicker: {
+    '& .react-datepicker-wrapper input': {
+      padding: '8px 10px',
+      marginBottom: '20px',
+      width: '300px',
+      fontSize: '14px',
+      borderRadius: '2px',
+      color: '#495057',
+      backgroundColor: '#fff',
+      border: '1px solid #ccc'
+    }
   }
 })

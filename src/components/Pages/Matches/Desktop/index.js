@@ -12,7 +12,14 @@ const Matches = ({
   matchesData,
   onSubmit,
   isAddMatch,
-  handleAddMatch
+  startDate,
+  finishDate,
+  handleStartDate,
+  handleFinishDate,
+  handleAddMatch,
+  handleTeamValue,
+  teamValue,
+  teams
 }) => (
   <div className={classes.root}>
     <div className={classes.headerMatches}>
@@ -23,7 +30,18 @@ const Matches = ({
       </div>
     </div>
 
-    {isAddMatch && <AddNewMatch onSubmit={onSubmit} />}
+    {isAddMatch && (
+      <AddNewMatch
+        onSubmit={onSubmit}
+        startDate={startDate}
+        finishDate={finishDate}
+        handleStartDate={handleStartDate}
+        handleFinishDate={handleFinishDate}
+        handleTeamValue={handleTeamValue}
+        teamValue={teamValue}
+        teams={teams}
+      />
+    )}
 
     {matchesData.map(item => (
       <Match id={item.id} data={item} key={item.id} />
@@ -36,7 +54,12 @@ Matches.propTypes = {
   isAddMatch: PropTypes.bool,
   matchesData: PropTypes.array,
   onSubmit: PropTypes.func,
-  handleAddMatch: PropTypes.func
+  handleAddMatch: PropTypes.func,
+  startDate: PropTypes.object,
+  finishDate: PropTypes.object,
+  handleStartDate: PropTypes.func,
+  handleFinishDate: PropTypes.func,
+  teams: PropTypes.array
 }
 
 export default withStyles(styles)(Matches)

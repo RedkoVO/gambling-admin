@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'redux-form'
 import cn from 'classnames'
+import DatePicker from 'react-datepicker'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import TextField from '../../../../App/Form/TextField'
+import EditableDatepicker from '../../../../App/Form/EditableDatepicker'
 import EditableTextField from '../../../../App/Form/EditableTextField'
 import Parameters from '../../../../../containers/Pages/Matches/Match/Parameters'
 
@@ -21,6 +23,10 @@ const Match = ({
   handleConfirmRemoveMatch,
   isConfirmRemoveMatch,
   isShowMore,
+  startDate,
+  finishDate,
+  handleStartDate,
+  handleFinishDate,
   onSubmit
 }) => {
   const formName = `match-${data.id}`
@@ -80,13 +86,29 @@ const Match = ({
               />
             </div>
 
-            <div className={classes.moreItem}>
-              <span>start:</span>
-              {data.start_at}
+            <div className={cn(classes.moreItem, classes.alowEdit)}>
+              <span>Start:</span>
+              <EditableDatepicker
+                className={classes.fieldEdit}
+                text={startDate}
+                selected={startDate}
+                handleStartDate={handleStartDate}
+                dateFormat="YYYY-MM-dd HH:mm"
+                showTimeInput
+                formName={formName}
+              />
             </div>
-            <div className={classes.moreItem}>
-              <span>finish:</span>
-              {data.finish_at}
+            <div className={cn(classes.moreItem, classes.alowEdit)}>
+              <span>Finish:</span>
+              <EditableDatepicker
+                className={classes.fieldEdit}
+                text={finishDate}
+                selected={startDate}
+                handleStartDate={handleFinishDate}
+                dateFormat="YYYY-MM-dd HH:mm"
+                showTimeInput
+                formName={formName}
+              />
             </div>
             <div className={classes.moreItem}>
               <span>1 team score:</span>
@@ -121,6 +143,10 @@ Match.propTypes = {
   isConfirmRemoveMatch: PropTypes.bool.isRequired,
   handleRemoveMatch: PropTypes.func.isRequired,
   handleConfirmRemoveMatch: PropTypes.func.isRequired,
+  startDate: PropTypes.object,
+  finishDate: PropTypes.object,
+  handleStartDate: PropTypes.func,
+  handleFinishDate: PropTypes.func,
   onSubmit: PropTypes.func.isRequired
 }
 

@@ -40,7 +40,7 @@ const AddNewMatch = ({
       />
 
       {/* react-select-search   !!!!!! NEEEED !!!!!!! */}
-      <LiveSearch teams={teams} />
+      {/* <LiveSearch teams={teams} /> */}
 
       <Field
         id="description"

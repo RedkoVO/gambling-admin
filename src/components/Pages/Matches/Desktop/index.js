@@ -18,7 +18,8 @@ const Matches = ({
   handleFinishDate,
   handleAddMatch,
   handleTeamValue,
-  teamValue,
+  team1Value,
+  team2Value,
   teams
 }) => (
   <div className={classes.root}>
@@ -38,7 +39,8 @@ const Matches = ({
         handleStartDate={handleStartDate}
         handleFinishDate={handleFinishDate}
         handleTeamValue={handleTeamValue}
-        teamValue={teamValue}
+        team1Value={team1Value}
+        team2Value={team2Value}
         teams={teams}
       />
     )}
@@ -59,6 +61,9 @@ Matches.propTypes = {
   finishDate: PropTypes.object,
   handleStartDate: PropTypes.func,
   handleFinishDate: PropTypes.func,
+  handleTeamValue: PropTypes.func,
+  team1Value: PropTypes.string,
+  team2Value: PropTypes.string,
   teams: PropTypes.array
 }
 

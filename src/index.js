@@ -6,6 +6,7 @@ import App from './containers/App'
 
 import registerServiceWorker from './registerServiceWorker'
 
+import './stules/liveSearch.css'
 import './index.css'
 
 const initApp = () => {

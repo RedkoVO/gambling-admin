@@ -1,12 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'redux-form'
-import cn from 'classnames'
 import withStyles from '@material-ui/core/styles/withStyles'
-
-import InputField from '../../../../App/Form/InputField'
-
-import EditableField from '../../../../App/Form/EditableField'
 
 import ShowMoreIcon from '../../../../../assets/images/show_more.png'
 import RemoveIcon from '../../../../../assets/images/remove.png'
@@ -23,27 +18,15 @@ const Bet = ({
   isShowMore,
   onSubmit
 }) => {
-  const formName = `bet-${data.id}`
+  // const formName = `bet-${data.id}`
 
   return (
     <div className={classes.root} key={data.id}>
       <Form className={classes.form} onSubmit={onSubmit}>
         <div className={classes.shortContent}>
           <div className={classes.field}>id: {data.id}</div>
-          <div className={classes.field}>role: {data.role}</div>
-          <div className={cn(classes.field, classes.alowEdit)}>
-            login:
-            <EditableField
-              text={data.login}
-              fieldId="login"
-              fieldName="login"
-              type="text"
-              component={InputField}
-              placeholder="Login"
-              className={classes.fieldEdit}
-              formName={formName}
-            />
-          </div>
+          <div className={classes.field}>user id: {data.user_id}</div>
+          <div className={classes.field}>amount: {data.amount}</div>
           <div className={classes.field}>created: {data.created_at}</div>
           <div className={classes.wrRightButtons}>
             {isConfirmRemoveBet ? (
@@ -71,27 +54,14 @@ const Bet = ({
 
         {isShowMore && (
           <div className={classes.moreContent}>
-            <div className={cn(classes.moreItem, classes.alowEdit)}>
-              <span>password:</span>
-              <EditableField
-                text={data.password}
-                fieldId="password"
-                fieldName="password"
-                type="text"
-                component={InputField}
-                placeholder="Password"
-                className={classes.fieldEdit}
-                formName={formName}
-              />
+            <div className={classes.moreItem}>
+              <span>parameter id:</span> {data.parameter_id}
             </div>
             <div className={classes.moreItem}>
-              <span>token:</span> {data.auth_token}
+              <span>processed:</span> {data.processed}
             </div>
             <div className={classes.moreItem}>
-              <span>valid until:</span> {data.valid_until}
-            </div>
-            <div className={classes.moreItem}>
-              <span>failed attempts:</span> {data.failed_attempts}
+              <span>win id:</span> {data.win_id}
             </div>
           </div>
         )}

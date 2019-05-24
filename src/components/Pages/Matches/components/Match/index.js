@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'redux-form'
 import cn from 'classnames'
-import DatePicker from 'react-datepicker'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import TextField from '../../../../App/Form/TextField'

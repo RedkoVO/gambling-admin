@@ -11,18 +11,22 @@ import Matches from '../../../components/Pages/Matches/Desktop'
 const teams = [
   {
     id: 1,
+    value: '1',
     name: 'Arsenal'
   },
   {
     id: 2,
+    value: '2',
     name: 'Ukraine'
   },
   {
     id: 3,
+    value: '3',
     name: 'Brazil'
   },
   {
     id: 4,
+    value: '4',
     name: 'France'
   }
 ]
@@ -41,7 +45,8 @@ export default compose(
   withState('isAddMatch', 'setAddMatch', false),
   withState('startDate', 'setStartDate', new Date()),
   withState('finishDate', 'setFinishDate', new Date()),
-  withState('teamValue', 'setTeamValue', ''),
+  withState('team1Value', 'setTeam1Value', ''),
+  withState('team2Value', 'setTeam2Value', ''),
   withHandlers({
     handleAddMatch: ({ setAddMatch, isAddMatch }) => () => {
       setAddMatch(!isAddMatch)
@@ -55,15 +60,22 @@ export default compose(
       setFinishDate(value)
     },
 
-    handleTeamValue: ({ setTeamValue }) => value => {
-      setTeamValue(value)
+    handleTeamValue: ({ setTeam1Value, setTeam2Value }) => (value, team) => {
+      if (team === 1) {
+        setTeam1Value(value.value)
+      } else {
+        setTeam2Value(value.value)
+      }
+      
     },
 
-    onSubmit: ({ dispatch, handleSubmit, startDate, finishDate }) =>
+    onSubmit: ({ dispatch, handleSubmit, startDate, finishDate, team1Value, team2Value }) =>
       handleSubmit(variables => {
         const data = {
           start_at: moment(startDate).format('YYYY-MM-DD HH:mm'),
           finish_at: moment(finishDate).format('YYYY-MM-DD HH:mm'),
+          team_1_id: team1Value,
+          team_2_id: team2Value,
           ...variables
         }
 

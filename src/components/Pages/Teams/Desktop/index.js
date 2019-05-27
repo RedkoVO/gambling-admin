@@ -14,6 +14,7 @@ const Teams = ({
   isAddTeam,
   handleAddTeam,
   handleChangeRole,
+  handleUploadImage,
   roleValue
 }) => (
   <div className={classes.root}>
@@ -30,6 +31,7 @@ const Teams = ({
         roleValue={roleValue}
         onSubmit={onSubmit}
         handleChangeRole={handleChangeRole}
+        handleUploadImage={handleUploadImage}
       />
     )}
 
@@ -46,6 +48,7 @@ Teams.propTypes = {
   onSubmit: PropTypes.func,
   handleAddTeam: PropTypes.func,
   handleChangeRole: PropTypes.func,
+  handleUploadImage: PropTypes.func,
   roleValue: PropTypes.number
 }
 

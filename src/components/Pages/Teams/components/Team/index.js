@@ -30,21 +30,22 @@ const Team = ({
       <Form className={classes.form} onSubmit={onSubmit}>
         <div className={classes.shortContent}>
           <div className={classes.field}>id: {data.id}</div>
-          <div className={classes.field}>role: {data.role}</div>
           <div className={cn(classes.field, classes.alowEdit)}>
-            login:
+            title:
             <EditableField
-              text={data.login}
-              fieldId="login"
-              fieldName="login"
+              text={data.title}
+              fieldId="title"
+              fieldName="title"
               type="text"
               component={InputField}
-              placeholder="Login"
+              placeholder="Title"
               className={classes.fieldEdit}
               formName={formName}
             />
           </div>
-          <div className={classes.field}>created: {data.created_at}</div>
+          <div className={classes.field}>
+            <img src={data.img_url} alt="" />
+          </div>
           <div className={classes.wrRightButtons}>
             {isConfirmRemoveTeam ? (
               <div className={classes.wrConfirmationRemove}>
@@ -69,32 +70,11 @@ const Team = ({
           </div>
         </div>
 
-        {isShowMore && (
+        {/* {isShowMore && (
           <div className={classes.moreContent}>
-            <div className={cn(classes.moreItem, classes.alowEdit)}>
-              <span>password:</span>
-              <EditableField
-                text={data.password}
-                fieldId="password"
-                fieldName="password"
-                type="text"
-                component={InputField}
-                placeholder="Password"
-                className={classes.fieldEdit}
-                formName={formName}
-              />
-            </div>
-            <div className={classes.moreItem}>
-              <span>token:</span> {data.auth_token}
-            </div>
-            <div className={classes.moreItem}>
-              <span>valid until:</span> {data.valid_until}
-            </div>
-            <div className={classes.moreItem}>
-              <span>failed attempts:</span> {data.failed_attempts}
-            </div>
+            
           </div>
-        )}
+        )} */}
       </Form>
     </div>
   )

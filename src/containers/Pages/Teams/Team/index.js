@@ -16,8 +16,7 @@ const FORM_NAME = 'team'
 const mapStateToProps = (state, ownProps) => ({
   form: `${FORM_NAME}-${ownProps.id}`,
   initialValues: {
-    login: ownProps.data.login,
-    password: ownProps.data.password
+    title: ownProps.data.title
   }
 })
 
@@ -54,8 +53,7 @@ export default compose(
       handleSubmit(variables => {
         const dataReqest = {
           id: data.id,
-          login: variables.login,
-          password: variables.password
+          title: variables.title
         }
 
         dispatch(updateTeam(dataReqest))

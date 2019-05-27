@@ -4,28 +4,30 @@ import { Form, Field } from 'redux-form'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import InputField from '../../../../App/Form/InputField'
+import InputFileUpload from '../../../../App/Form/InputFileUpload'
 
 import styles from './styles'
 
-const AddNewTeam = ({ classes, onSubmit }) => (
+const AddNewTeam = ({ classes, onSubmit, handleUploadImage }) => (
   <div className={classes.root}>
     <Form className={classes.form} onSubmit={onSubmit}>
       <Field
-        id="login"
-        name="login"
+        id="title"
+        name="title"
         type="text"
         component={InputField}
-        placeholder="Login"
+        placeholder="Title"
         className={classes.field}
       />
 
       <Field
-        id="password"
-        name="password"
-        type="text"
-        component={InputField}
-        placeholder="Password"
-        className={classes.field}
+        name="img_url"
+        type="file"
+        component={InputFileUpload}
+        className={classes.file}
+        onChange={e => handleUploadImage(e)}
+        multiple
+        accept=".jpg, .png, .jpeg"
       />
 
       <button type="submit" className={classes.submit}>
@@ -39,7 +41,8 @@ AddNewTeam.propTypes = {
   classes: PropTypes.object,
   roleValue: PropTypes.number,
   onSubmit: PropTypes.func,
-  handleChangeRole: PropTypes.func
+  handleChangeRole: PropTypes.func,
+  handleUploadImage: PropTypes.func
 }
 
 export default withStyles(styles)(AddNewTeam)

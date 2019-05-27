@@ -16,7 +16,11 @@ export default () => ({
     minHeight: '60px'
   },
   field: {
-    padding: '10px 0'
+    padding: '10px 0',
+
+    '& img': {
+      width: '100px'
+    }
   },
   alowEdit: {
     display: 'flex',

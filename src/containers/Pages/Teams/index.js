@@ -19,14 +19,32 @@ export default compose(
     form: FORM_NAME
   }),
   withState('isAddTeam', 'setAddTeam', false),
+  withState('imagesUploaded', 'setImage', []),
   withHandlers({
     handleAddTeam: ({ setAddTeam, isAddTeam }) => () => {
       setAddTeam(!isAddTeam)
     },
 
-    onSubmit: ({ dispatch, handleSubmit }) =>
+    handleUploadImage: ({ setImage }) => e => {
+      const images = []
+
+      Array.from(e.target.files).forEach(item => {
+        images.push(item)
+      })
+
+      setImage(images)
+    },
+
+    onSubmit: ({ dispatch, handleSubmit, imagesUploaded }) =>
       handleSubmit(variables => {
-        dispatch(createTeam(variables))
+        const data = new FormData()
+        data.set('title', variables.title)
+
+        imagesUploaded.forEach((item, index) => {
+          data.set(`image[${index}]`, item)
+        })
+
+        dispatch(createTeam(data))
           .then(res => {
             if (res.success) {
               dispatch(fetchTeams())

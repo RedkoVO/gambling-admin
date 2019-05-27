@@ -30,9 +30,11 @@ const Game = ({
       <Form className={classes.form} onSubmit={onSubmit}>
         <div className={classes.shortContent}>
           <div className={classes.field}>id: {data.id}</div>
+
           <div className={classes.field}>
             <img src={data.img_url} alt="" />
           </div>
+
           <div className={cn(classes.field, classes.alowEdit)}>
             title:
             <EditableField

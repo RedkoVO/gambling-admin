@@ -14,6 +14,7 @@ const Games = ({
   isAddGame,
   handleAddGame,
   handleChangeRole,
+  handleUploadImage,
   roleValue
 }) => (
   <div className={classes.root}>
@@ -30,6 +31,7 @@ const Games = ({
         roleValue={roleValue}
         onSubmit={onSubmit}
         handleChangeRole={handleChangeRole}
+        handleUploadImage={handleUploadImage}
       />
     )}
 
@@ -46,6 +48,7 @@ Games.propTypes = {
   onSubmit: PropTypes.func,
   handleAddGame: PropTypes.func,
   handleChangeRole: PropTypes.func,
+  handleUploadImage: PropTypes.func,
   roleValue: PropTypes.number
 }
 

@@ -19,14 +19,33 @@ export default compose(
     form: FORM_NAME
   }),
   withState('isAddGame', 'setAddGame', false),
+  withState('imagesUploaded', 'setImage', []),
   withHandlers({
     handleAddGame: ({ setAddGame, isAddGame }) => () => {
       setAddGame(!isAddGame)
     },
 
-    onSubmit: ({ dispatch, handleSubmit }) =>
+    handleUploadImage: ({ setImage }) => e => {
+      const images = []
+
+      Array.from(e.target.files).forEach(item => {
+        images.push(item)
+      })
+
+      setImage(images)
+    },
+
+    onSubmit: ({ dispatch, handleSubmit, imagesUploaded }) =>
       handleSubmit(variables => {
-        dispatch(createGame(variables))
+        const data = new FormData()
+        data.set('title', variables.title)
+        data.set('code', variables.code)
+
+        imagesUploaded.forEach((item, index) => {
+          data.set(`img_url[${index}]`, item)
+        })
+
+        dispatch(createGame(data))
           .then(res => {
             if (res.success) {
               dispatch(fetchGames())

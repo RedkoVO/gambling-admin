@@ -23,6 +23,9 @@ export default () => ({
     backgroundColor: '#fff',
     border: '1px solid #ccc'
   },
+  selectField: {
+    marginBottom: '20px'
+  },
   submit: {
     width: '150px',
     margin: '0 auto',

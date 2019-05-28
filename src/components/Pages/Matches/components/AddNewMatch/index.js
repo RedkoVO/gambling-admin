@@ -2,12 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Form, Field } from 'redux-form'
 import DatePicker from 'react-datepicker'
-import SelectSearch from 'react-select-search'
+import VirtualizedSelect from 'react-virtualized-select'
+
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import InputField from '../../../../App/Form/InputField'
-
-import 'react-datepicker/dist/react-datepicker.css'
 
 import styles from './styles'
 
@@ -21,26 +20,34 @@ const AddNewMatch = ({
   handleTeamValue,
   team1Value,
   team2Value,
-  teams
+  teamsData
 }) => (
   <div className={classes.root}>
     <Form className={classes.form} onSubmit={onSubmit}>
-      <SelectSearch
+      <VirtualizedSelect
+        options={teamsData}
+        simpleValue
+        clearable
         name="team_1_id"
-        mode="input"
         value={team1Value}
-        options={teams}
         onChange={val => handleTeamValue(val, 1)}
-        placeholder="Your team"
+        searchable
+        labelKey="title"
+        valueKey="id"
+        className={classes.selectField}
       />
 
-      <SelectSearch
+      <VirtualizedSelect
+        options={teamsData}
+        simpleValue
+        clearable
         name="team_2_id"
-        mode="input"
         value={team2Value}
-        options={teams}
         onChange={val => handleTeamValue(val, 2)}
-        placeholder="Your team"
+        searchable
+        labelKey="title"
+        valueKey="id"
+        className={classes.selectField}
       />
 
       <Field
@@ -81,9 +88,9 @@ AddNewMatch.propTypes = {
   handleStartDate: PropTypes.func,
   handleFinishDate: PropTypes.func,
   handleTeamValue: PropTypes.func,
-  team1Value: PropTypes.string,
-  team2Value: PropTypes.string,
-  teams: PropTypes.array
+  team1Value: PropTypes.number,
+  team2Value: PropTypes.number,
+  teamsData: PropTypes.array
 }
 
 export default withStyles(styles)(AddNewMatch)

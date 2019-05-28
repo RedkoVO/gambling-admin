@@ -6,7 +6,9 @@ import App from './containers/App'
 
 import registerServiceWorker from './registerServiceWorker'
 
-import './stules/liveSearch.css'
+import 'react-virtualized-select/styles.css'
+import 'react-datepicker/dist/react-datepicker.css'
+import './styles/reactSelect.css'
 import './index.css'
 
 const initApp = () => {

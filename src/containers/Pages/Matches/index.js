@@ -1,40 +1,19 @@
 import compose from 'recompose/compose'
-import { withHandlers, lifecycle, withState, withProps, pure } from 'recompose'
+import { withHandlers, lifecycle, withState, pure } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import moment from 'moment'
 
 import { fetchMatches, createMatches } from '../../../redux/actions/matches'
+import { fetchTeams } from '../../../redux/actions/teams'
 
 import Matches from '../../../components/Pages/Matches/Desktop'
-
-const teams = [
-  {
-    id: 1,
-    value: '1',
-    name: 'Arsenal'
-  },
-  {
-    id: 2,
-    value: '2',
-    name: 'Ukraine'
-  },
-  {
-    id: 3,
-    value: '3',
-    name: 'Brazil'
-  },
-  {
-    id: 4,
-    value: '4',
-    name: 'France'
-  }
-]
 
 const FORM_NAME = 'newMatches'
 
 const mapStateToProps = state => ({
-  matchesData: state.matches.matches
+  matchesData: state.matches.matches,
+  teamsData: state.teams.teams
 })
 
 export default compose(
@@ -45,8 +24,8 @@ export default compose(
   withState('isAddMatch', 'setAddMatch', false),
   withState('startDate', 'setStartDate', new Date()),
   withState('finishDate', 'setFinishDate', new Date()),
-  withState('team1Value', 'setTeam1Value', ''),
-  withState('team2Value', 'setTeam2Value', ''),
+  withState('team1Value', 'setTeam1Value', null),
+  withState('team2Value', 'setTeam2Value', null),
   withHandlers({
     handleAddMatch: ({ setAddMatch, isAddMatch }) => () => {
       setAddMatch(!isAddMatch)
@@ -62,14 +41,20 @@ export default compose(
 
     handleTeamValue: ({ setTeam1Value, setTeam2Value }) => (value, team) => {
       if (team === 1) {
-        setTeam1Value(value.value)
+        setTeam1Value(value)
       } else {
-        setTeam2Value(value.value)
+        setTeam2Value(value)
       }
-      
     },
 
-    onSubmit: ({ dispatch, handleSubmit, startDate, finishDate, team1Value, team2Value }) =>
+    onSubmit: ({
+      dispatch,
+      handleSubmit,
+      startDate,
+      finishDate,
+      team1Value,
+      team2Value
+    }) =>
       handleSubmit(variables => {
         const data = {
           start_at: moment(startDate).format('YYYY-MM-DD HH:mm'),
@@ -95,10 +80,8 @@ export default compose(
       const { dispatch } = this.props
 
       dispatch(fetchMatches())
+      dispatch(fetchTeams())
     }
   }),
-  withProps(() => ({
-    teams: teams
-  })),
   pure
 )(Matches)

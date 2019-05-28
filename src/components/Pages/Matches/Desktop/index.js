@@ -20,7 +20,7 @@ const Matches = ({
   handleTeamValue,
   team1Value,
   team2Value,
-  teams
+  teamsData
 }) => (
   <div className={classes.root}>
     <div className={classes.headerMatches}>
@@ -41,7 +41,7 @@ const Matches = ({
         handleTeamValue={handleTeamValue}
         team1Value={team1Value}
         team2Value={team2Value}
-        teams={teams}
+        teamsData={teamsData}
       />
     )}
 
@@ -62,9 +62,9 @@ Matches.propTypes = {
   handleStartDate: PropTypes.func,
   handleFinishDate: PropTypes.func,
   handleTeamValue: PropTypes.func,
-  team1Value: PropTypes.string,
-  team2Value: PropTypes.string,
-  teams: PropTypes.array
+  team1Value: PropTypes.number,
+  team2Value: PropTypes.number,
+  teamsData: PropTypes.array
 }
 
 export default withStyles(styles)(Matches)

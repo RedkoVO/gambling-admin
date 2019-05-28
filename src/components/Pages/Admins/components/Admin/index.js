@@ -5,8 +5,8 @@ import cn from 'classnames'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import InputField from '../../../../App/Form/InputField'
-
 import EditableField from '../../../../App/Form/EditableField'
+import EditableSelect from '../../../../App/Form/EditableSelect'
 
 import ShowMoreIcon from '../../../../../assets/images/show_more.png'
 import RemoveIcon from '../../../../../assets/images/remove.png'
@@ -19,6 +19,8 @@ const Admin = ({
   handleShowMore,
   handleRemoveAdmin,
   handleConfirmRemoveAdmin,
+  handleChangeRole,
+  roleValue,
   isConfirmRemoveAdmin,
   isShowMore,
   onSubmit
@@ -30,7 +32,18 @@ const Admin = ({
       <Form className={classes.form} onSubmit={onSubmit}>
         <div className={classes.shortContent}>
           <div className={classes.field}>id: {data.id}</div>
-          <div className={classes.field}>role: {data.role}</div>
+          <div className={cn(classes.moreItem, classes.alowEdit)}>
+            <span>role:</span>
+            <EditableSelect
+              text={data.role}
+              fieldId="role"
+              fieldName="role"
+              handleChangeRole={handleChangeRole}
+              roleValue={roleValue}
+              className={classes.fieldEdit}
+              formName={formName}
+            />
+          </div>
           <div className={cn(classes.field, classes.alowEdit)}>
             login:
             <EditableField
@@ -108,7 +121,9 @@ Admin.propTypes = {
   handleShowMore: PropTypes.func.isRequired,
   handleRemoveAdmin: PropTypes.func.isRequired,
   handleConfirmRemoveAdmin: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  roleValue: PropTypes.number.isRequired,
+  handleChangeRole: PropTypes.func.isRequired
 }
 
 export default withStyles(styles)(Admin)

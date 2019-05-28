@@ -25,10 +25,15 @@ export default compose(
   connect(mapStateToProps),
   reduxForm(),
   withState('isShowMore', 'setShowMore', false),
+  withState('roleValue', 'setRoleValue', 0),
   withState('isConfirmRemoveAdmin', 'setConfirmRemoveAdmin', false),
   withHandlers({
     handleShowMore: ({ isShowMore, setShowMore }) => () => {
       setShowMore(!isShowMore)
+    },
+
+    handleChangeRole: ({ setRoleValue }) => value => {
+      setRoleValue(value)
     },
 
     handleConfirmRemoveAdmin: ({

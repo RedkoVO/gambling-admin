@@ -12,6 +12,7 @@ const games = (state = initialState, action) => {
       return {
         ...state,
         games: payload.models,
+        domain: payload.domain,
         success: payload.success
       }
     default:

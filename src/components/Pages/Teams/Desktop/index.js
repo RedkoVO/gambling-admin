@@ -10,6 +10,7 @@ import styles from './styles'
 const Teams = ({
   classes,
   teamsData,
+  domain,
   onSubmit,
   isAddTeam,
   handleAddTeam,
@@ -36,7 +37,7 @@ const Teams = ({
     )}
 
     {teamsData.map(item => (
-      <Team id={item.id} data={item} key={item.id} />
+      <Team id={item.id} data={item} key={item.id} domain={domain} />
     ))}
   </div>
 )

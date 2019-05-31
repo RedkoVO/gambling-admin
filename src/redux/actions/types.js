@@ -9,3 +9,7 @@ export const FETCH_GAMES = 'FETCH_GAMES'
 export const FETCH_TEAMS = 'FETCH_TEAMS'
 
 export const FETCH_BETS = 'FETCH_BETS'
+
+export const FETCH_DEPOSITS = 'FETCH_DEPOSITS'
+
+export const FETCH_WITHDRAWS = 'FETCH_WITHDRAWS'

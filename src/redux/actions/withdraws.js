@@ -1,10 +1,10 @@
-import { FETCH_TEAMS } from './types'
+import { FETCH_WITHDRAWS } from './types'
 import axios from 'axios'
 
 import gC from '../../constants'
 
-/* FETCH TEAMS */
-export const fetchTeams = () => async dispatch => {
+/* FETCH WITHDRAWS */
+export const fetchWithdraws = () => async dispatch => {
   try {
     const res = await axios({
       method: 'get',
@@ -12,28 +12,27 @@ export const fetchTeams = () => async dispatch => {
         Accept: 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      url: `${gC.API_URL}/api/teams`
+      url: `${gC.API_URL}/api/withdraws`
     })
-    dispatch(createFetchTeamsSuccess(res.data))
+    dispatch(createFetchWithdrawsSuccess(res.data))
     return res.data
   } catch (error) {
-    console.log('FETCH_TEAMS error', error)
+    console.log('FETCH_WITHDRAWS error', error)
   }
 }
 
-export const createFetchTeamsSuccess = data => {
+export const createFetchWithdrawsSuccess = data => {
   return {
-    type: FETCH_TEAMS,
+    type: FETCH_WITHDRAWS,
     payload: {
       models: data.models,
-      domain: data.domain,
       success: data.success
     }
   }
 }
 
-/* PUT TEAMS */
-export const createTeam = data => async () => {
+/* PUT WITHDRAWS */
+export const createWithdraw = data => async () => {
   try {
     const res = await axios({
       method: 'post',
@@ -43,16 +42,16 @@ export const createTeam = data => async () => {
         http_x_rest_method: 'PUT'
       },
       data: data,
-      url: `${gC.API_URL}/api/teams`
+      url: `${gC.API_URL}/api/withdraws`
     })
     return res.data
   } catch (error) {
-    console.log('PUT_TEAMS error', error)
+    console.log('PUT_WITHDRAWS error', error)
   }
 }
 
-/* UPDATE TEAMS */
-export const updateTeam = data => async () => {
+/* UPDATE WITHDRAWS */
+export const updateWithdraw = data => async () => {
   try {
     const res = await axios({
       method: 'post',
@@ -61,16 +60,16 @@ export const updateTeam = data => async () => {
         'Content-Type': `multipart/form-data`
       },
       data: data,
-      url: `${gC.API_URL}/api/teams?id=${data.id}`
+      url: `${gC.API_URL}/api/withdraws?id=${data.id}`
     })
     return res.data
   } catch (error) {
-    console.log('UPDATE_TEAMS error', error)
+    console.log('UPDATE_WITHDRAWS error', error)
   }
 }
 
-/* REMOVE TEAMS */
-export const removeTeam = id => async () => {
+/* REMOVE WITHDRAWS */
+export const removeWithdraw = id => async () => {
   try {
     const res = await axios({
       method: 'post',
@@ -79,10 +78,10 @@ export const removeTeam = id => async () => {
         'Content-Type': `multipart/form-data`,
         http_x_rest_method: 'DELETE'
       },
-      url: `${gC.API_URL}/api/teams?id=${id}`
+      url: `${gC.API_URL}/api/withdraws?id=${id}`
     })
     return res.data
   } catch (error) {
-    console.log('REMOVE_TEAMS error', error)
+    console.log('REMOVE_WITHDRAWS error', error)
   }
 }

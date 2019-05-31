@@ -77,6 +77,28 @@ const NavMenu = ({ classes, isShowMenu }) => (
           Bets
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to={'/deposits'}
+          exact
+          className={classes.menuItem}
+          activeClassName="active"
+        >
+          <DashboardLogo className={classes.menuIcon} />
+          Deposits
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={'/withdraws'}
+          exact
+          className={classes.menuItem}
+          activeClassName="active"
+        >
+          <DashboardLogo className={classes.menuIcon} />
+          Withdraws
+        </NavLink>
+      </li>
     </ul>
   </nav>
 )

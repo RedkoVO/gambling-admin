@@ -1,63 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Form } from 'redux-form'
-import cn from 'classnames'
 import withStyles from '@material-ui/core/styles/withStyles'
-
-import InputField from '../../../../App/Form/InputField'
-
-import EditableField from '../../../../App/Form/EditableField'
 
 import ShowMoreIcon from '../../../../../assets/images/show_more.png'
 import RemoveIcon from '../../../../../assets/images/remove.png'
 
 import styles from './styles'
 
-const Team = ({
+const Deposit = ({
   classes,
   data,
-  domain,
   handleShowMore,
-  handleRemoveTeam,
-  handleConfirmRemoveTeam,
-  isConfirmRemoveTeam,
+  handleRemoveDeposit,
+  handleConfirmRemoveDeposit,
+  isConfirmRemoveDeposit,
   isShowMore,
   onSubmit
 }) => {
-  const formName = `team-${data.id}`
+  // const formName = `deposit-${data.id}`
 
   return (
     <div className={classes.root} key={data.id}>
       <Form className={classes.form} onSubmit={onSubmit}>
         <div className={classes.shortContent}>
           <div className={classes.field}>id: {data.id}</div>
-          <div className={cn(classes.field, classes.alowEdit)}>
-            title:
-            <EditableField
-              text={data.title}
-              fieldId="title"
-              fieldName="title"
-              type="text"
-              component={InputField}
-              placeholder="Title"
-              className={classes.fieldEdit}
-              formName={formName}
-            />
-          </div>
-          <div className={classes.field}>
-            <img src={`${domain}${data.image}`} alt="" />
-          </div>
+          <div className={classes.field}>user id: {data.user_id}</div>
+          <div className={classes.field}>amount: {data.amount}</div>
+          <div className={classes.field}>created: {data.created_at}</div>
           <div className={classes.wrRightButtons}>
-            {isConfirmRemoveTeam ? (
+            {isConfirmRemoveDeposit ? (
               <div className={classes.wrConfirmationRemove}>
-                <div onClick={() => handleRemoveTeam(data.id)}>DELETE</div>
-                <div onClick={() => handleConfirmRemoveTeam()}>CANCEL</div>
+                <div onClick={() => handleRemoveDeposit(data.id)}>DELETE</div>
+                <div onClick={() => handleConfirmRemoveDeposit()}>CANCEL</div>
               </div>
             ) : (
               <img
                 src={RemoveIcon}
                 className={classes.remove}
-                onClick={() => handleConfirmRemoveTeam()}
+                onClick={() => handleConfirmRemoveDeposit()}
                 alt="remove"
               />
             )}
@@ -71,25 +52,27 @@ const Team = ({
           </div>
         </div>
 
-        {/* {isShowMore && (
+        {isShowMore && (
           <div className={classes.moreContent}>
-            
+            <div className={classes.moreItem}>
+              <span>processed:</span> {data.processed}
+            </div>
           </div>
-        )} */}
+        )}
       </Form>
     </div>
   )
 }
 
-Team.propTypes = {
+Deposit.propTypes = {
   classes: PropTypes.object,
   data: PropTypes.object,
   isShowMore: PropTypes.bool.isRequired,
-  isConfirmRemoveTeam: PropTypes.bool.isRequired,
+  isConfirmRemoveDeposit: PropTypes.bool.isRequired,
   handleShowMore: PropTypes.func.isRequired,
-  handleRemoveTeam: PropTypes.func.isRequired,
-  handleConfirmRemoveTeam: PropTypes.func.isRequired,
+  handleRemoveDeposit: PropTypes.func.isRequired,
+  handleConfirmRemoveDeposit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 
-export default withStyles(styles)(Team)
+export default withStyles(styles)(Deposit)

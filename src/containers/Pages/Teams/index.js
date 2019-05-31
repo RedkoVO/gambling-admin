@@ -10,7 +10,8 @@ import Teams from '../../../components/Pages/Teams/Desktop'
 const FORM_NAME = 'newTeam'
 
 const mapStateToProps = state => ({
-  teamsData: state.teams.teams
+  teamsData: state.teams.teams,
+  domain: state.teams.domain
 })
 
 export default compose(

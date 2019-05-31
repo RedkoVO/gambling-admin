@@ -10,7 +10,8 @@ import Games from '../../../components/Pages/Games/Desktop'
 const FORM_NAME = 'newGame'
 
 const mapStateToProps = state => ({
-  gamesData: state.games.games
+  gamesData: state.games.games,
+  domain: state.games.domain,
 })
 
 export default compose(

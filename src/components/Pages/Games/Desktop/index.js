@@ -10,6 +10,7 @@ import styles from './styles'
 const Games = ({
   classes,
   gamesData,
+  domain,
   onSubmit,
   isAddGame,
   handleAddGame,
@@ -36,7 +37,7 @@ const Games = ({
     )}
 
     {gamesData.map(item => (
-      <Game id={item.id} data={item} key={item.id} />
+      <Game id={item.id} data={item} key={item.id} domain={domain} />
     ))}
   </div>
 )

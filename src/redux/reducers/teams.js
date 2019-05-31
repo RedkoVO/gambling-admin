@@ -12,6 +12,7 @@ const teams = (state = initialState, action) => {
       return {
         ...state,
         teams: payload.models,
+        domain: payload.domain,
         success: payload.success
       }
     default:

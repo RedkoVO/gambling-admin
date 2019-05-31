@@ -26,6 +26,7 @@ export const createFetchGamesSuccess = data => {
     type: FETCH_GAMES,
     payload: {
       models: data.models,
+      domain: data.domain,
       success: data.success
     }
   }

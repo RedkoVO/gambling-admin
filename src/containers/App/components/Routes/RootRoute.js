@@ -10,6 +10,8 @@ import Matches from '../../../Pages/Matches'
 import Games from '../../../Pages/Games'
 import Teams from '../../../Pages/Teams'
 import Bets from '../../../Pages/Bets'
+import Deposits from '../../../Pages/Deposits'
+import Withdraws from '../../../Pages/Withdraws'
 
 import withToken from '../../../../hocs/withToken'
 
@@ -33,6 +35,8 @@ const RootRoute = props => {
       {tmpToken && <RoutePage path={`/games`} component={Games} />}
       {tmpToken && <RoutePage path={`/teams`} component={Teams} />}
       {tmpToken && <RoutePage path={`/bets`} component={Bets} />}
+      {tmpToken && <RoutePage path={`/deposits`} component={Deposits} />}
+      {tmpToken && <RoutePage path={`/withdraws`} component={Withdraws} />}
 
       {tmpToken && <RoutePage path={`/`} component={Admins} />}
 

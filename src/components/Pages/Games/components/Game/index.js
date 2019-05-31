@@ -16,6 +16,7 @@ import styles from './styles'
 const Game = ({
   classes,
   data,
+  domain,
   handleShowMore,
   handleRemoveGame,
   handleConfirmRemoveGame,
@@ -32,7 +33,7 @@ const Game = ({
           <div className={classes.field}>id: {data.id}</div>
 
           <div className={classes.field}>
-            <img src={data.img_url} alt="" />
+            <img src={`${domain}${data.img_url}`} alt="" />
           </div>
 
           <div className={cn(classes.field, classes.alowEdit)}>

@@ -23,13 +23,8 @@ const mapStateToProps = (state, ownProps) => ({
 export default compose(
   connect(mapStateToProps),
   reduxForm(),
-  withState('isShowMore', 'setShowMore', false),
   withState('isConfirmRemoveTeam', 'setConfirmRemoveTeam', false),
   withHandlers({
-    handleShowMore: ({ isShowMore, setShowMore }) => () => {
-      setShowMore(!isShowMore)
-    },
-
     handleConfirmRemoveTeam: ({
       isConfirmRemoveTeam,
       setConfirmRemoveTeam

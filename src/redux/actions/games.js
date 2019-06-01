@@ -86,3 +86,27 @@ export const removeGame = id => async () => {
     console.log('REMOVE_GAMES error', error)
   }
 }
+
+/* UPDATE IMAGES Game */
+export const updateImagesGame = (images, id) => async () => {
+  const bodyFormData = new FormData()
+
+  images.forEach((item, index) => {
+    bodyFormData.set(`images[${index}]`, item)
+  })
+
+  try {
+    const res = await axios({
+      method: 'post',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': `multipart/form-data`,
+      },
+      data: bodyFormData,
+      url: `${gC.API_URL}/api/games/image?id=${id}`
+    })
+    return res.data
+  } catch (error) {
+    console.log('UPDATE_IMAGES_GAME error', error)
+  }
+}

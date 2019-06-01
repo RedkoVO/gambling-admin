@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Form } from 'redux-form'
+import { Form, Field } from 'redux-form'
 import cn from 'classnames'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import InputField from '../../../../App/Form/InputField'
 
 import EditableField from '../../../../App/Form/EditableField'
+import InputFileUpload from '../../../../App/Form/InputFileUpload'
 
 import ShowMoreIcon from '../../../../../assets/images/show_more.png'
 import RemoveIcon from '../../../../../assets/images/remove.png'
@@ -21,6 +22,7 @@ const Game = ({
   handleRemoveGame,
   handleConfirmRemoveGame,
   isConfirmRemoveGame,
+  handleUpdateImages,
   isShowMore,
   onSubmit
 }) => {
@@ -32,8 +34,22 @@ const Game = ({
         <div className={classes.shortContent}>
           <div className={classes.field}>id: {data.id}</div>
 
-          <div className={classes.field}>
-            <img src={`${domain}${data.img_url}`} alt="" />
+          <div className={cn(classes.moreItem, classes.alowEdit)}>
+            <span>images:</span>
+
+            <div className={classes.field}>
+              <img src={`${domain}${data.img_url}`} alt="" />
+            </div>
+
+            <Field
+              name="img_url"
+              type="file"
+              component={InputFileUpload}
+              className={classes.file}
+              onChange={e => handleUpdateImages(e)}
+              multiple
+              accept=".jpg, .png, .jpeg"
+            />
           </div>
 
           <div className={cn(classes.field, classes.alowEdit)}>
@@ -107,6 +123,7 @@ Game.propTypes = {
   handleShowMore: PropTypes.func.isRequired,
   handleRemoveGame: PropTypes.func.isRequired,
   handleConfirmRemoveGame: PropTypes.func.isRequired,
+  handleUpdateImages: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired
 }
 

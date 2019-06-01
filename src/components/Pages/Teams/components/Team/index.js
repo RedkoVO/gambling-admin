@@ -8,7 +8,6 @@ import InputField from '../../../../App/Form/InputField'
 
 import EditableField from '../../../../App/Form/EditableField'
 
-import ShowMoreIcon from '../../../../../assets/images/show_more.png'
 import RemoveIcon from '../../../../../assets/images/remove.png'
 
 import styles from './styles'
@@ -17,11 +16,9 @@ const Team = ({
   classes,
   data,
   domain,
-  handleShowMore,
   handleRemoveTeam,
   handleConfirmRemoveTeam,
   isConfirmRemoveTeam,
-  isShowMore,
   onSubmit
 }) => {
   const formName = `team-${data.id}`
@@ -61,21 +58,8 @@ const Team = ({
                 alt="remove"
               />
             )}
-
-            <img
-              src={ShowMoreIcon}
-              className={classes.showMoreIcon}
-              onClick={() => handleShowMore()}
-              alt="show more"
-            />
           </div>
         </div>
-
-        {/* {isShowMore && (
-          <div className={classes.moreContent}>
-            
-          </div>
-        )} */}
       </Form>
     </div>
   )
@@ -84,9 +68,7 @@ const Team = ({
 Team.propTypes = {
   classes: PropTypes.object,
   data: PropTypes.object,
-  isShowMore: PropTypes.bool.isRequired,
   isConfirmRemoveTeam: PropTypes.bool.isRequired,
-  handleShowMore: PropTypes.func.isRequired,
   handleRemoveTeam: PropTypes.func.isRequired,
   handleConfirmRemoveTeam: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired

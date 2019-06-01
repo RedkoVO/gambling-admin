@@ -32,7 +32,7 @@ const Admin = ({
       <Form className={classes.form} onSubmit={onSubmit}>
         <div className={classes.shortContent}>
           <div className={classes.field}>id: {data.id}</div>
-          <div className={cn(classes.moreItem, classes.alowEdit)}>
+          <div className={cn(classes.field, classes.alowEdit)}>
             <span>role:</span>
             <EditableSelect
               text={data.role}

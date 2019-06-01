@@ -1,7 +1,7 @@
 import compose from 'recompose/compose'
 import { connect } from 'react-redux'
 import { withState, withHandlers, lifecycle, pure } from 'recompose'
-import { reduxForm } from 'redux-form'
+import { reduxForm, reset } from 'redux-form'
 
 import { fetchTeams, createTeam } from '../../../redux/actions/teams'
 
@@ -49,6 +49,7 @@ export default compose(
           .then(res => {
             if (res.success) {
               dispatch(fetchTeams())
+              dispatch(reset('newTeam'))
             }
           })
           .catch(err => {

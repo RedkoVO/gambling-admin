@@ -4,7 +4,14 @@ import { NavLink } from 'react-router-dom'
 import withStyles from '@material-ui/core/styles/withStyles'
 import cn from 'classnames'
 
-import { ReactComponent as DashboardLogo } from '../../../assets/images/svg/wallet.svg'
+import AdminLogo from '../../../assets/images/admin.png'
+import UserLogo from '../../../assets/images/users.png'
+import MatchLogo from '../../../assets/images/matches.png'
+import GameLogo from '../../../assets/images/games.png'
+import TeamLogo from '../../../assets/images/teams.png'
+import BetLogo from '../../../assets/images/bets.png'
+import DepositLogo from '../../../assets/images/deposits.png'
+import WithdrawLogo from '../../../assets/images/withdraw.png'
 
 import styles from './styles'
 
@@ -18,7 +25,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={AdminLogo} className={classes.menuIcon} alt="" />
           Admins
         </NavLink>
       </li>
@@ -29,7 +36,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={UserLogo} className={classes.menuIcon} alt="" />
           Users
         </NavLink>
       </li>
@@ -40,7 +47,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={MatchLogo} className={classes.menuIcon} alt="" />
           Matches
         </NavLink>
       </li>
@@ -51,7 +58,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={GameLogo} className={classes.menuIcon} alt="" />
           Games
         </NavLink>
       </li>
@@ -62,7 +69,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={TeamLogo} className={classes.menuIcon} alt="" />
           Teams
         </NavLink>
       </li>
@@ -73,7 +80,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={BetLogo} className={classes.menuIcon} alt="" />
           Bets
         </NavLink>
       </li>
@@ -84,7 +91,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={DepositLogo} className={classes.menuIcon} alt="" />
           Deposits
         </NavLink>
       </li>
@@ -95,7 +102,7 @@ const NavMenu = ({ classes, isShowMenu }) => (
           className={classes.menuItem}
           activeClassName="active"
         >
-          <DashboardLogo className={classes.menuIcon} />
+          <img src={WithdrawLogo} className={classes.menuIcon} alt="" />
           Withdraws
         </NavLink>
       </li>

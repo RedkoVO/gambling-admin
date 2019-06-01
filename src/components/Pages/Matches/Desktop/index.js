@@ -20,7 +20,8 @@ const Matches = ({
   handleTeamValue,
   team1Value,
   team2Value,
-  teamsData
+  teamsData,
+  domain
 }) => (
   <div className={classes.root}>
     <div className={classes.headerMatches}>
@@ -42,6 +43,7 @@ const Matches = ({
         team1Value={team1Value}
         team2Value={team2Value}
         teamsData={teamsData}
+        domain={domain}
       />
     )}
 
@@ -54,6 +56,7 @@ const Matches = ({
 Matches.propTypes = {
   classes: PropTypes.object,
   isAddMatch: PropTypes.bool,
+  domain: PropTypes.string,
   matchesData: PropTypes.array,
   onSubmit: PropTypes.func,
   handleAddMatch: PropTypes.func,

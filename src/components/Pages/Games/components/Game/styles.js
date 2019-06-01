@@ -19,7 +19,9 @@ export default () => ({
     padding: '10px 0',
 
     '& img': {
-      width: '100px'
+      width: '100px',
+      marginRight: '20px',
+      boxShadow: '0px 0px 10px -2px rgba(0,0,0,0.75)'
     }
   },
   alowEdit: {

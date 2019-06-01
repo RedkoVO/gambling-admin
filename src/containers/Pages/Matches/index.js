@@ -1,7 +1,7 @@
 import compose from 'recompose/compose'
 import { withHandlers, lifecycle, withState, pure } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm } from 'redux-form'
+import { reduxForm, reset } from 'redux-form'
 import moment from 'moment'
 
 import { fetchMatches, createMatches } from '../../../redux/actions/matches'
@@ -13,7 +13,8 @@ const FORM_NAME = 'newMatches'
 
 const mapStateToProps = state => ({
   matchesData: state.matches.matches,
-  teamsData: state.teams.teams
+  teamsData: state.teams.teams,
+  domain: state.teams.domain
 })
 
 export default compose(
@@ -68,6 +69,7 @@ export default compose(
           .then(res => {
             if (res.success) {
               dispatch(fetchMatches())
+              dispatch(reset('newMatches'))
             }
           })
           .catch(err => {
@@ -78,7 +80,6 @@ export default compose(
   lifecycle({
     componentDidMount() {
       const { dispatch } = this.props
-
       dispatch(fetchMatches())
       dispatch(fetchTeams())
     }

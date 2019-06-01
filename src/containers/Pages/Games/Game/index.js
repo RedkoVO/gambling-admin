@@ -6,7 +6,8 @@ import { reduxForm } from 'redux-form'
 import {
   fetchGames,
   updateGame,
-  removeGame
+  removeGame,
+  updateImagesGame
 } from '../../../../redux/actions/games'
 
 import Game from '../../../../components/Pages/Games/components/Game'
@@ -47,6 +48,25 @@ export default compose(
         })
         .catch(err => {
           console.log('Error delete:', err)
+        })
+    },
+
+    handleUpdateImages: ({ dispatch, data, setShowMore }) => e => {
+      const images = []
+
+      Array.from(e.target.files).forEach(item => {
+        images.push(item)
+      })
+
+      dispatch(updateImagesGame(images, data.id))
+        .then(res => {
+          if (res.success) {
+            dispatch(fetchGames())
+            setShowMore(false)
+          }
+        })
+        .catch(err => {
+          console.log('Error create img:', err)
         })
     },
 

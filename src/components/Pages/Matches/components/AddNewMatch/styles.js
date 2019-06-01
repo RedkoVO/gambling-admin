@@ -47,5 +47,8 @@ export default () => ({
       backgroundColor: '#fff',
       border: '1px solid #ccc'
     }
+  },
+  teamIcon: {
+    width: '20px'
   }
 })

@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import { Form, Field } from 'redux-form'
 import DatePicker from 'react-datepicker'
 import VirtualizedSelect from 'react-virtualized-select'
-
 import withStyles from '@material-ui/core/styles/withStyles'
 
 import InputField from '../../../../App/Form/InputField'
+import TeamOptionRenderer from './components/TeamOptionRenderer'
 
 import styles from './styles'
 
 const AddNewMatch = ({
   classes,
+  domain,
   startDate,
   finishDate,
   handleStartDate,
@@ -35,6 +36,7 @@ const AddNewMatch = ({
         labelKey="title"
         valueKey="id"
         className={classes.selectField}
+        optionRenderer={TeamOptionRenderer(domain, classes)}
       />
 
       <VirtualizedSelect
@@ -48,6 +50,7 @@ const AddNewMatch = ({
         labelKey="title"
         valueKey="id"
         className={classes.selectField}
+        optionRenderer={TeamOptionRenderer(domain, classes)}
       />
 
       <Field
@@ -83,6 +86,7 @@ const AddNewMatch = ({
 AddNewMatch.propTypes = {
   classes: PropTypes.object,
   onSubmit: PropTypes.func,
+  domain: PropTypes.string,
   startDate: PropTypes.object,
   finishDate: PropTypes.object,
   handleStartDate: PropTypes.func,

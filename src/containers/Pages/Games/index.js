@@ -1,7 +1,7 @@
 import compose from 'recompose/compose'
 import { connect } from 'react-redux'
 import { withState, withHandlers, lifecycle, pure } from 'recompose'
-import { reduxForm } from 'redux-form'
+import { reduxForm, reset } from 'redux-form'
 
 import { fetchGames, createGame } from '../../../redux/actions/games'
 
@@ -11,7 +11,7 @@ const FORM_NAME = 'newGame'
 
 const mapStateToProps = state => ({
   gamesData: state.games.games,
-  domain: state.games.domain,
+  domain: state.games.domain
 })
 
 export default compose(
@@ -36,7 +36,7 @@ export default compose(
       setImage(images)
     },
 
-    onSubmit: ({ dispatch, handleSubmit, imagesUploaded }) =>
+    onSubmit: ({ dispatch, handleSubmit, imagesUploaded, setAddGame }) =>
       handleSubmit(variables => {
         const data = new FormData()
         data.set('title', variables.title)
@@ -50,6 +50,8 @@ export default compose(
           .then(res => {
             if (res.success) {
               dispatch(fetchGames())
+              dispatch(reset(FORM_NAME))
+              setAddGame(false)
             }
           })
           .catch(err => {

@@ -34,6 +34,7 @@ const AddNewGame = ({ classes, onSubmit, handleUploadImage }) => (
         type="file"
         component={InputFileUpload}
         className={classes.file}
+        test={'classes.file'}
         onChange={e => handleUploadImage(e)}
         multiple
         accept=".jpg, .png, .jpeg"

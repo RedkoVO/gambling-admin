@@ -35,6 +35,13 @@ export default () => ({
     padding: '10px 20px',
     borderRadius: '20px',
     fontSize: '14px',
-    backgroundColor: '#2ed8b6'
+    backgroundColor: '#2ed8b6',
+
+    '&:focus': {
+      outline: 'none'
+    }
+  },
+  file: {
+    marginBottom: '20px',
   }
 })

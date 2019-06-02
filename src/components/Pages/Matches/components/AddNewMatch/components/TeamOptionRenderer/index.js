@@ -19,14 +19,15 @@ const TeamOptionRenderer = (domain, classes) => ({
       key={key}
       onClick={() => selectValue(option)}
       onMouseEnter={() => focusOption(option)}
+      className={classes.wrSelectItem}
       style={style}
     >
-      <label>{option.title}</label>
       <img
         className={classes.teamIcon}
         src={`${domain}${option.image}`}
         alt=""
       />
+      <label className={classes.labelSelectItem}>{option.title}</label>
     </div>
   )
 }

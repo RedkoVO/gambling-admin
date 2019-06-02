@@ -54,7 +54,12 @@ export default compose(
       startDate,
       finishDate,
       team1Value,
-      team2Value
+      team2Value,
+      setAddMatch,
+      setTeam1Value,
+      setTeam2Value,
+      setStartDate,
+      setFinishDate
     }) =>
       handleSubmit(variables => {
         const data = {
@@ -69,7 +74,12 @@ export default compose(
           .then(res => {
             if (res.success) {
               dispatch(fetchMatches())
-              dispatch(reset('newMatches'))
+              dispatch(reset(FORM_NAME))
+              setTeam1Value(null)
+              setTeam2Value(null)
+              setStartDate(new Date())
+              setFinishDate(new Date())
+              setAddMatch(false)
             }
           })
           .catch(err => {

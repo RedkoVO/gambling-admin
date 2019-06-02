@@ -48,7 +48,23 @@ export default () => ({
       border: '1px solid #ccc'
     }
   },
+  wrSelectItem: {
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    transition: 'background 0.1s ease-out',
+
+    '&:hover': {
+      background: '#eaeaea'
+    }
+  },
+  labelSelectItem: {
+    paddingLeft: '20px',
+    fontSize: '15px'
+  },
   teamIcon: {
-    width: '20px'
+    width: '25px',
+    height: '25px',
+    marginLeft: '10px'
   }
 })
